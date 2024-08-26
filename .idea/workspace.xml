@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0bbbf3f-fd8b-49e9-8af6-ca11875b2ca8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/src/main/java/com/paccy/configuration_server/ConfigurationServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configuration-server/src/test/java/com/paccy/configuration_server/ConfigurationServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/configuration-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/configuration-server/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,24 +21,37 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2lA5bwvctRiS6LONy0NCgOZ5arQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/paccy/Desktop/codes/banking-system&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/paccy/Desktop/codes/banking-system/backend/configuration-server/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ConfigurationServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="configuration-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.configuration_server.ConfigurationServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -63,11 +70,14 @@
       <updated>1724610115409</updated>
       <workItem from="1724610116487" duration="100000" />
       <workItem from="1724653112804" duration="713000" />
-      <workItem from="1724661918667" duration="3170000" />
+      <workItem from="1724661918667" duration="3558000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
