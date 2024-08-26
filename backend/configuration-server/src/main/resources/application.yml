@@ -14,4 +14,4 @@ spring:
 
 
 server:
-  port: 8886
+  port: 8888
