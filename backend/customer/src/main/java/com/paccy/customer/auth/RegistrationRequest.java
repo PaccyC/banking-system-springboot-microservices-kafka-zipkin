@@ -18,7 +18,7 @@ public record RegistrationRequest(
         @NotNull(message = "phoneNumber is required")
         String phoneNumber,
         @NotNull(message = "password is required")
-        @Min(value = 8,message = "Password must be atleat 8 characters")
+        @Min(value = 8,message = "Password must be atleast 8 characters")
         String password,
         @NotNull(message = "address is required")
         Address address

@@ -1,12 +1,15 @@
 package com.paccy.customer.auth.services;
 
 import com.paccy.customer.auth.AuthResponse;
+import com.paccy.customer.auth.LoginRequest;
 import com.paccy.customer.auth.RegistrationRequest;
 import com.paccy.customer.entities.Address;
 import com.paccy.customer.entities.Customer;
 import com.paccy.customer.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +47,17 @@ public class AuthService {
         return new AuthResponse(token);
 
 
+    }
+
+    public AuthResponse signin(LoginRequest loginRequest) {
+
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.email(),loginRequest.password())
+        );
+        Customer customer= customerRepository.findByEmail(loginRequest.email())
+                .orElseThrow(()-> new UsernameNotFoundException("Customer not found,please try again"));
+
+        String token= jwtService.generateToken(customer);
+        return new AuthResponse(token);
     }
 }
