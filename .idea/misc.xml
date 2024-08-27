@@ -7,7 +7,19 @@
         <option value="$PROJECT_DIR$/backend/pom.xml" />
         <option value="$PROJECT_DIR$/backend/configuration-server/pom.xml" />
         <option value="$PROJECT_DIR$/backend/discovery-server/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/customer-service/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/customer/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/product/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/services/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/services/discovery/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/services/product/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/services/customer/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/backend/services/customer/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="corretto-21" project-jdk-type="JavaSDK">
