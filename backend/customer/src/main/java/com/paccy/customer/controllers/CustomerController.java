@@ -2,13 +2,11 @@ package com.paccy.customer.controllers;
 
 import com.paccy.customer.entities.Customer;
 import com.paccy.customer.services.CustomerService;
-import com.paccy.customer.utils.CustomerRequest;
+import com.paccy.customer.utils.EditCustomerRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,13 +14,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
     private final CustomerService customerService;
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getCustomerById(
+            @PathVariable Integer id
+    ){
+        return ResponseEntity.ok(customerService.getCustomerById(id));
+    }
 
-    @PostMapping
-    private ResponseEntity<Customer> registerCustomer(
-            @RequestBody CustomerRequest customerRequest
-    ) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Customer> editCustomer(
+            @RequestBody @Validated EditCustomerRequest editCustomerRequest,
+            @PathVariable Integer id
+    ){
+        return ResponseEntity.ok(customerService.editCustomer(editCustomerRequest,id));
+    }
 
-        return  ResponseEntity.ok(customerService.registerCustomer(customerRequest));
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCustomer(
+            @PathVariable Integer id
+    ){
+        return ResponseEntity.ok(customerService.deleteCustomer(id));
     }
 
 }
