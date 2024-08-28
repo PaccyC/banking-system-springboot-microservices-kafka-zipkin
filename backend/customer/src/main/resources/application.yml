@@ -1,8 +1,33 @@
 spring:
   profiles:
     active: dev
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${env._GITHUB_CLIENT_ID}
+            client-secret: ${env._GITHUB_CLIENT_SECRET}
+#            scope: read:user
+#            redirect-uri: "{baseUrl}/login/oauth2/code/github"
+#            client-name: GitHub
+#            authorization-grant-type: authorization_code
+
+          google:
+            client-id: ${env._GOOGLE_CLIENT_ID}
+            client-secret: ${env._GOOGLE_CLIENT_SECRET}
+#            scope: profile, email
+#            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+#            client-name: Google
+#            authorization-grant-type: authorization_code
+
+
   config:
     import: optional:configserver:http://localhost:8888
 
   application:
     name: customer-service
+
+
+
