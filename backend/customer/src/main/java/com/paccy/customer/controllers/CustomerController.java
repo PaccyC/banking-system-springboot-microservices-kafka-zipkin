@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,22 +27,27 @@ public class CustomerController {
     private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
     private final CustomerService customerService;
     private final JwtService jwtService;
- ;
 
-//
-//    @GetMapping("")
-//    public ResponseEntity<Optional<Customer>> getCurrentCustomer() {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication != null && authentication.isAuthenticated() ) {
-//            System.out.println(authentication.getPrincipal());
-//        } else {
-//            log.warn("No authenticated user found");
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//        }
-//        return null;
-//    }
 
-    @GetMapping("")
+@GetMapping("/current")
+    public ResponseEntity<Optional<Customer>> getCurrentCustomer() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    System.out.println("Principal: "+ authentication.getPrincipal());
+    System.out.println("IsAuthenticated:" +authentication.isAuthenticated());
+
+        if (authentication != null && authentication.isAuthenticated()
+                && !(authentication.getPrincipal() instanceof String)) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            log.info("Authenticated user: " + userDetails.getUsername());
+            log.info("Authorities: " + userDetails.getAuthorities());
+            return ResponseEntity.ok(customerService.getCustomerByEmail(userDetails.getUsername()));
+        } else {
+            log.warn("No authenticated user found");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
+    @GetMapping("/me")
     public ResponseEntity<Optional<Customer>> getCustomerProfile(
             @RequestHeader("Authorization") String authHeader){
         String token=authHeader.substring(7);

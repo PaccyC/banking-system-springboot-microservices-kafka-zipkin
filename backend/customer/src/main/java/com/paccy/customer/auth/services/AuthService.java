@@ -9,6 +9,9 @@ import com.paccy.customer.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,9 +24,17 @@ public class AuthService {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+    private final UserDetailsServiceImpl userDetailsService;
 
     public AuthResponse register(RegistrationRequest registrationRequest) {
 
+        UserDetails userDetails = userDetailsService.loadUserByUsername(registrationRequest.email());
+
+
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, registrationRequest.password(),
+                userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 //        Creation of customer
         var customer= Customer
                 .builder()
@@ -41,8 +52,9 @@ public class AuthService {
                         .build())
                 .build() ;
 
+
         customer= customerRepository.save(customer);
-        String token= jwtService.generateToken(customer);
+        String token= jwtService.generateToken(authentication);
 
         return new AuthResponse(token);
 
@@ -50,6 +62,14 @@ public class AuthService {
     }
 
     public AuthResponse signin(LoginRequest loginRequest) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.email());
+
+
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, loginRequest.password(),
+                userDetails.getAuthorities());
+        System.out.println(authentication);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.email(),loginRequest.password())
@@ -57,7 +77,7 @@ public class AuthService {
         Customer customer= customerRepository.findByEmail(loginRequest.email())
                 .orElseThrow(()-> new UsernameNotFoundException("Customer not found,please try again"));
 
-        String token= jwtService.generateToken(customer);
+        String token= jwtService.generateToken(authentication);
         return new AuthResponse(token);
     }
 }

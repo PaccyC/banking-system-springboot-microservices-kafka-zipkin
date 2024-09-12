@@ -6,11 +6,16 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Function;
 
 @Service
@@ -53,10 +58,14 @@ public class JwtService {
       return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateToken(Customer customer){
-      String token=Jwts
+    public String generateToken(Authentication authentication){
+      Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+        String roles = populateAuthorities(authorities);
+        String token=Jwts
               .builder()
-              .subject(customer.getEmail())
+                .claim("email",authentication.getPrincipal())
+                .claim("authorities",roles)
               .issuedAt(new Date(System.currentTimeMillis()))
               .expiration(new Date(System.currentTimeMillis()+ 24*60*60*1000))
               .signWith(getSignInKey(), SignatureAlgorithm.HS256)
@@ -65,6 +74,13 @@ public class JwtService {
       return token;
     }
 
+    private static String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
+        Set<String> auths = new HashSet<>();
+        for (GrantedAuthority authority : authorities) {
+            auths.add(authority.getAuthority());
+        }
+        return String.join(",", auths);
+    }
 
 
 }
