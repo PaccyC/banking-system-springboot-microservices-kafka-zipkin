@@ -7,6 +7,8 @@ import com.paccy.customer.utils.EditCustomerRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -34,5 +36,11 @@ public class CustomerService {
         Customer customer = getCustomerById(id);
         customerRepository.delete(customer);
         return "Customer with id " + id + " deleted";
+    }
+
+
+    public Optional<Customer> getCustomerByEmail(String email) {
+        return Optional.ofNullable(customerRepository.findByEmail(email)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer with email " + email + " not found")));
     }
 }

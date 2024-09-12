@@ -31,13 +31,13 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         req ->req
-                                .requestMatchers("/api/v1/customer/").authenticated()
+                                .requestMatchers("/api/v1/customer/","/api/v1/customer/me").authenticated()
                                 .anyRequest().permitAll()
                 )
-                .oauth2Login(
-                        oath2login->
-                                oath2login.loginPage("/login")
-                )
+//                .oauth2Login(
+//                        oath2login->
+//                                oath2login.loginPage("/login")
+//                )
                 .userDetailsService(userDetailsServiceImpl)
                 .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

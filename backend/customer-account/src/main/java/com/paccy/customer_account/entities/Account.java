@@ -19,7 +19,7 @@ public class Account {
 
     @Id
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE
+            strategy = GenerationType.IDENTITY
     )
     private Integer id;
 
@@ -28,7 +28,8 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
 
-    private String balance;
+    private Double balance;
+    private String currency;
 
     @Column( updatable = false)
     @CreatedDate

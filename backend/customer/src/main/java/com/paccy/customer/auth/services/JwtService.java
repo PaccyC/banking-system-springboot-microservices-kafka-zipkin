@@ -25,16 +25,16 @@ public class JwtService {
       return extractClaim(token,Claims::getExpiration);
   }
 
-  public boolean isValid(String token,UserDetails user) {
-      String username= extractUsername(token);
-      return (username.equals(user.getUsername())) && isTokenExpired(token);
-  }
+    public boolean isValid(String token, UserDetails user) {
+        String username = extractUsername(token);
+        return (username.equals(user.getUsername())) && !isTokenExpired(token);
+    }
 
   public String extractUsername(String token) {
     return extractClaim(token,Claims::getSubject);
   }
 
-    public  <T> T extractClaim(String token, Function<Claims,T> claimsResolver) {
+  public  <T> T extractClaim(String token, Function<Claims,T> claimsResolver) {
       Claims claims= extractAllClaims(token);
       return claimsResolver.apply(claims);
   }
@@ -53,7 +53,6 @@ public class JwtService {
       return Keys.hmacShaKeyFor(keyBytes);
     }
 
-
     public String generateToken(Customer customer){
       String token=Jwts
               .builder()
@@ -65,6 +64,7 @@ public class JwtService {
 
       return token;
     }
+
 
 
 }
