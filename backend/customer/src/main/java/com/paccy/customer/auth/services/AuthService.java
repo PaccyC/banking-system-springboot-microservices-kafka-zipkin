@@ -7,6 +7,9 @@ import com.paccy.customer.entities.Address;
 import com.paccy.customer.entities.Customer;
 import com.paccy.customer.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,7 +29,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsServiceImpl userDetailsService;
 
-    public AuthResponse register(RegistrationRequest registrationRequest) {
+    public ResponseEntity<AuthResponse> register(RegistrationRequest registrationRequest) {
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(registrationRequest.email());
 
@@ -55,13 +58,17 @@ public class AuthService {
 
         customer= customerRepository.save(customer);
         String token= jwtService.generateToken(authentication);
-
-        return new AuthResponse(token);
+        //        Setting  up auth cookies
+        ResponseCookie authCookie=ResponseCookie.from("token",token).maxAge(6000).build();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.SET_COOKIE,authCookie.toString());
+          AuthResponse authResponse= new AuthResponse(token);
+        return ResponseEntity.ok().headers(headers).body(authResponse);
 
 
     }
 
-    public AuthResponse signin(LoginRequest loginRequest) {
+    public ResponseEntity<AuthResponse> signin(LoginRequest loginRequest) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.email());
 
 
@@ -74,10 +81,19 @@ public class AuthService {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.email(),loginRequest.password())
         );
+
         Customer customer= customerRepository.findByEmail(loginRequest.email())
                 .orElseThrow(()-> new UsernameNotFoundException("Customer not found,please try again"));
 
         String token= jwtService.generateToken(authentication);
-        return new AuthResponse(token);
+
+//        Setting  up auth cookies
+        ResponseCookie authCookie=ResponseCookie.from("token",token).maxAge(6000).build();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.SET_COOKIE,authCookie.toString());
+
+        AuthResponse authResponse= new AuthResponse(token);
+
+        return ResponseEntity.ok().headers(headers).body(authResponse);
     }
 }

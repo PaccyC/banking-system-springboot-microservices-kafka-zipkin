@@ -29,6 +29,7 @@ public class CustomerController {
     private final JwtService jwtService;
 
 
+
 @GetMapping("/current")
     public ResponseEntity<Optional<Customer>> getCurrentCustomer() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

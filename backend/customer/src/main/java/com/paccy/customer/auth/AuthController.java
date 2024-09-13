@@ -22,13 +22,13 @@ public class AuthController {
             @RequestBody RegistrationRequest registrationRequest
     ) {
 
-        return ResponseEntity.ok(authService.register(registrationRequest));
+        return ResponseEntity.ok(authService.register(registrationRequest).getBody());
     }
 
     @PostMapping("/login")
     private ResponseEntity<AuthResponse> authenticateCustomer(
             @RequestBody LoginRequest loginRequest
     ){
-        return ResponseEntity.ok(authService.signin(loginRequest));
+        return ResponseEntity.ok(authService.signin(loginRequest).getBody());
     }
 }
