@@ -50,8 +50,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String email = String.valueOf(claims.getSubject());
         String authoritiesClaim = (String) claims.get("authorities");
         List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList(authoritiesClaim);
-        System.out.println(authorities);
-        System.out.println(email);
 //        Here in my case, username is the email
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() ==null){

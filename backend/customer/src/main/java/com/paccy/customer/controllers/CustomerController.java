@@ -33,38 +33,19 @@ public class CustomerController {
 @GetMapping("/current")
     public ResponseEntity<Optional<Customer>> getCurrentCustomer() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Checking if we get principal and current authentication status
     System.out.println("Principal: "+ authentication.getPrincipal());
     System.out.println("IsAuthenticated:" +authentication.isAuthenticated());
 
         if (authentication != null && authentication.isAuthenticated()
                 && !(authentication.getPrincipal() instanceof String)) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            log.info("Authenticated user: " + userDetails.getUsername());
-            log.info("Authorities: " + userDetails.getAuthorities());
+
             return ResponseEntity.ok(customerService.getCustomerByEmail(userDetails.getUsername()));
         } else {
             log.warn("No authenticated user found");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-    }
-
-    @GetMapping("/me")
-    public ResponseEntity<Optional<Customer>> getCustomerProfile(
-            @RequestHeader("Authorization") String authHeader){
-        String token=authHeader.substring(7);
-        String email=jwtService.extractUsername(token);
-        log.info("Extracted email:"+ email);
-
-        Optional<Customer> customer= customerService.getCustomerByEmail(email);
-        if (customer.isPresent()){
-            return ResponseEntity.ok(customer);
-
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-
     }
 
     @GetMapping("/{id}")
