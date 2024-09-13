@@ -22,7 +22,11 @@ spring:
 #            client-name: Google
 #            authorization-grant-type: authorization_code
 
-
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
   config:
     import: optional:configserver:http://localhost:8888
 
