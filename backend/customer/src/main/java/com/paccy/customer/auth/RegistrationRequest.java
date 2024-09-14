@@ -1,6 +1,7 @@
 package com.paccy.customer.auth;
 
 import com.paccy.customer.entities.Address;
+import com.paccy.customer.entities.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +22,9 @@ public record RegistrationRequest(
         @Min(value = 8,message = "Password must be atleast 8 characters")
         String password,
         @NotNull(message = "address is required")
-        Address address
+        Address address,
+
+        @NotNull(message =" Role is required")
+        Role role
 ) {
 }

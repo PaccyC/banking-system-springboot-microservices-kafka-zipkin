@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Validated
 public class Customer implements UserDetails {
 
     @Id
@@ -29,6 +31,9 @@ public class Customer implements UserDetails {
     private String email;
     private String phoneNumber;
     private String password;
+    @Enumerated(EnumType.STRING)
+    private  Role role;
+
 
     @Embedded
     private Address address;
@@ -36,7 +41,8 @@ public class Customer implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override

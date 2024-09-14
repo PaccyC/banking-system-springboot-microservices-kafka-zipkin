@@ -7,6 +7,8 @@ import com.paccy.customer.entities.Address;
 import com.paccy.customer.entities.Customer;
 import com.paccy.customer.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthService {
 
+    private static final Logger log = LoggerFactory.getLogger(AuthService.class);
     private final CustomerRepository customerRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
@@ -31,6 +34,26 @@ public class AuthService {
 
     public ResponseEntity<AuthResponse> register(RegistrationRequest registrationRequest) {
 
+
+//        Creation of customer
+            var customer = Customer
+                    .builder()
+                    .id(registrationRequest.id())
+                    .firstName(registrationRequest.firstName())
+                    .lastName(registrationRequest.lastName())
+                    .email(registrationRequest.email())
+                    .phoneNumber(registrationRequest.phoneNumber())
+                    .password(passwordEncoder.encode(registrationRequest.password()))
+                    .address(Address
+                            .builder()
+                            .street(registrationRequest.address().getStreet())
+                            .houseNumber(registrationRequest.address().getHouseNumber())
+                            .zipCode(registrationRequest.address().getZipCode())
+                            .build())
+                    .role(registrationRequest.role())
+                    .build();
+
+            customerRepository.save(customer);
         UserDetails userDetails = userDetailsService.loadUserByUsername(registrationRequest.email());
 
 
@@ -38,35 +61,17 @@ public class AuthService {
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, registrationRequest.password(),
                 userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-//        Creation of customer
-        var customer= Customer
-                .builder()
-                .id(registrationRequest.id())
-                .firstName(registrationRequest.firstName())
-                .lastName(registrationRequest.lastName())
-                .email(registrationRequest.email())
-                .phoneNumber(registrationRequest.phoneNumber())
-                .password(passwordEncoder.encode(registrationRequest.password()))
-                .address(Address
-                        .builder()
-                        .street(registrationRequest.address().getStreet())
-                        .houseNumber(registrationRequest.address().getHouseNumber())
-                        .zipCode(registrationRequest.address().getZipCode())
-                        .build())
-                .build() ;
+            String token = jwtService.generateToken(authentication);
+            //        Setting  up auth cookies
+            ResponseCookie authCookie = ResponseCookie.from("token", token).maxAge(6000).build();
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.SET_COOKIE, authCookie.toString());
+            AuthResponse authResponse = new AuthResponse(token);
+
+            return ResponseEntity.ok().headers(headers).body(authResponse);
 
 
-        customer= customerRepository.save(customer);
-        String token= jwtService.generateToken(authentication);
-        //        Setting  up auth cookies
-        ResponseCookie authCookie=ResponseCookie.from("token",token).maxAge(6000).build();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.SET_COOKIE,authCookie.toString());
-          AuthResponse authResponse= new AuthResponse(token);
-        return ResponseEntity.ok().headers(headers).body(authResponse);
-
-
-    }
+        }
 
     public ResponseEntity<AuthResponse> signin(LoginRequest loginRequest) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.email());
@@ -75,14 +80,15 @@ public class AuthService {
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, loginRequest.password(),
                 userDetails.getAuthorities());
-        System.out.println(authentication);
+//        Current Authentication status
+            System.out.println(authentication);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.email(),loginRequest.password())
         );
 
-        Customer customer= customerRepository.findByEmail(loginRequest.email())
+        customerRepository.findByEmail(loginRequest.email())
                 .orElseThrow(()-> new UsernameNotFoundException("Customer not found,please try again"));
 
         String token= jwtService.generateToken(authentication);
@@ -97,3 +103,4 @@ public class AuthService {
         return ResponseEntity.ok().headers(headers).body(authResponse);
     }
 }
+

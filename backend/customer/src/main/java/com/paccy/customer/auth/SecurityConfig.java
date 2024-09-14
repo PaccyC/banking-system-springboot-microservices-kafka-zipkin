@@ -31,7 +31,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         req ->req
-                                .requestMatchers("/api/v1/customer/").authenticated()
+                                .requestMatchers("/api/v1/customer/").hasAuthority("ROLE_CUSTOMER")
                                 .anyRequest().permitAll()
                 )
 //                .oauth2Login(

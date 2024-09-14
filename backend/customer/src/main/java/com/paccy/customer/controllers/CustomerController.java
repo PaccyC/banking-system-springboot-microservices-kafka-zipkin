@@ -36,7 +36,7 @@ public class CustomerController {
 //        Checking if we get principal and current authentication status
     System.out.println("Principal: "+ authentication.getPrincipal());
     System.out.println("IsAuthenticated:" +authentication.isAuthenticated());
-
+    System.out.println(authentication);
         if (authentication != null && authentication.isAuthenticated()
                 && !(authentication.getPrincipal() instanceof String)) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();

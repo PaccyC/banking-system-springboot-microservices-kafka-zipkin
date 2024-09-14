@@ -16,9 +16,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Record" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -45,9 +45,9 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.ConfigurationServerApplication.executor": "Run",
+    "Spring Boot.ConfigurationServerApplication.executor": "Debug",
     "Spring Boot.CustomerAccountApplication.executor": "Run",
-    "Spring Boot.CustomerApplication.executor": "Debug",
+    "Spring Boot.CustomerApplication.executor": "Run",
     "Spring Boot.CustomerServiceApplication.executor": "Run",
     "Spring Boot.DiscoveryApplication.executor": "Run",
     "Spring Boot.DiscoveryServerApplication.executor": "Run",
@@ -158,6 +158,8 @@
       <workItem from="1726078357809" duration="5246000" />
       <workItem from="1726114973246" duration="3261000" />
       <workItem from="1726200676903" duration="4616000" />
+      <workItem from="1726233589692" duration="11096000" />
+      <workItem from="1726314530439" duration="2544000" />
     </task>
     <servers />
   </component>
