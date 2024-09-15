@@ -2,6 +2,7 @@ package com.paccy.customer.auth;
 
 
 import com.paccy.customer.auth.services.AuthService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,5 +31,11 @@ public class AuthController {
             @RequestBody LoginRequest loginRequest
     ){
         return ResponseEntity.ok(authService.signin(loginRequest).getBody());
+    }
+
+    @PostMapping("/logout")
+    private ResponseEntity<?> logoutUser(HttpServletRequest request){
+
+   return ResponseEntity.ok().body(authService.logoutUser(request));
     }
 }

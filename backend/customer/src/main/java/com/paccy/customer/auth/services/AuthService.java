@@ -106,7 +106,7 @@ public class AuthService {
         return ResponseEntity.ok().headers(headers).body(authResponse);
     }
 
-    private ResponseEntity<String> logoutUser(HttpServletRequest request) {
+    public ResponseEntity<?> logoutUser(HttpServletRequest request) {
         try {
 
 
