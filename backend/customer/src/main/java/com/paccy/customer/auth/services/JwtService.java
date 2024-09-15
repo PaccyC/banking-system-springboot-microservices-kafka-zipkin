@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 public class JwtService {
     private static final Logger log = LoggerFactory.getLogger(JwtService.class);
     private final String SECRET_KEY="bbb2JvLuOKbhGcbf3iw3RP3Y1leWUouWU6mxAMZk0hmQ=wiwwjewj3e82u812q281wdpqu23usg";
+    private final Set<String> invalidatedTokens = new HashSet<>();
   private boolean isTokenExpired(String token) {
       return extractExpiration(token).before(new Date());
 
@@ -62,9 +63,11 @@ public class JwtService {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         String roles = populateAuthorities(authorities);
 
+        System.out.println(roles);
         // Include roles in the token claims
         String token = Jwts.builder()
-                .claim("email", authentication.getPrincipal())
+                .claim("user", authentication.getPrincipal())
+                .claim("username",authentication.getName())
                 .claim("authorities", roles)  // Make sure "authorities" is added
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))  // 1 day expiration
@@ -80,6 +83,14 @@ public class JwtService {
             auths.add(authority.getAuthority());
         }
         return String.join(",", auths);
+    }
+
+    private void invalidateToken(String token) {
+      invalidatedTokens.add(token);
+    }
+
+    private boolean isTokenInvalidated(String token) {
+      return invalidatedTokens.contains(token);
     }
 
 

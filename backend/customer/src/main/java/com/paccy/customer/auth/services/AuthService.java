@@ -82,6 +82,7 @@ public class AuthService {
                 userDetails.getAuthorities());
 //        Current Authentication status
             System.out.println(authentication);
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         authenticationManager.authenticate(

@@ -34,7 +34,7 @@ public class CustomerController {
     public ResponseEntity<Optional<Customer>> getCurrentCustomer() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        Checking if we get principal and current authentication status
-    System.out.println("Principal: "+ authentication.getPrincipal());
+//    System.out.println("Principal: "+ authentication.getPrincipal());
     System.out.println("IsAuthenticated:" +authentication.isAuthenticated());
     System.out.println(authentication);
         if (authentication != null && authentication.isAuthenticated()

@@ -45,7 +45,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.ConfigurationServerApplication.executor": "Debug",
+    "Spring Boot.ConfigurationServerApplication.executor": "Run",
     "Spring Boot.CustomerAccountApplication.executor": "Run",
     "Spring Boot.CustomerApplication.executor": "Run",
     "Spring Boot.CustomerServiceApplication.executor": "Run",
@@ -159,7 +159,8 @@
       <workItem from="1726114973246" duration="3261000" />
       <workItem from="1726200676903" duration="4616000" />
       <workItem from="1726233589692" duration="11096000" />
-      <workItem from="1726314530439" duration="2544000" />
+      <workItem from="1726314530439" duration="5310000" />
+      <workItem from="1726384280918" duration="8949000" />
     </task>
     <servers />
   </component>

@@ -34,10 +34,6 @@ public class SecurityConfig {
                                 .requestMatchers("/api/v1/customer/").hasAuthority("ROLE_CUSTOMER")
                                 .anyRequest().permitAll()
                 )
-//                .oauth2Login(
-//                        oath2login->
-//                                oath2login.loginPage("/login")
-//                )
                 .userDetailsService(userDetailsServiceImpl)
                 .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
