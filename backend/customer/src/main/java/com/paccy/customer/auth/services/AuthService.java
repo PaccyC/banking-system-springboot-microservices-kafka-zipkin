@@ -6,6 +6,7 @@ import com.paccy.customer.auth.RegistrationRequest;
 import com.paccy.customer.entities.Address;
 import com.paccy.customer.entities.Customer;
 import com.paccy.customer.repositories.CustomerRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -102,6 +104,24 @@ public class AuthService {
         AuthResponse authResponse= new AuthResponse(token);
 
         return ResponseEntity.ok().headers(headers).body(authResponse);
+    }
+
+    private ResponseEntity<String> logoutUser(HttpServletRequest request) {
+        try {
+
+
+            SecurityContextHolder.clearContext();
+            String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+            if (authHeader != null && authHeader.startsWith("Bearer ")) {
+                String token = authHeader.substring(7);
+                jwtService.invalidateToken(token);
+            }
+
+        }
+        catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
+        return ResponseEntity.ok().body("Logged out successfully");
     }
 }
 

@@ -77,7 +77,14 @@ public class JwtService {
         return token;
     }
 
-    private static String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
+    public void invalidateToken(String token) {
+        invalidatedTokens.add(token);
+    }
+
+    public boolean isTokenInvalidated(String token) {
+        return invalidatedTokens.contains(token);
+    }
+    public static String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
         Set<String> auths = new HashSet<>();
         for (GrantedAuthority authority : authorities) {
             auths.add(authority.getAuthority());
@@ -85,13 +92,7 @@ public class JwtService {
         return String.join(",", auths);
     }
 
-    private void invalidateToken(String token) {
-      invalidatedTokens.add(token);
-    }
 
-    private boolean isTokenInvalidated(String token) {
-      return invalidatedTokens.contains(token);
-    }
 
 
 }
