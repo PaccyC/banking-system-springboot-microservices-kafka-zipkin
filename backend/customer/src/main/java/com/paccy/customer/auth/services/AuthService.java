@@ -23,6 +23,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -63,7 +66,9 @@ public class AuthService {
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, registrationRequest.password(),
                 userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-            String token = jwtService.generateToken(authentication);
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("email",customer.getEmail());
+            String token = jwtService.generateToken(claims,userDetails);
             //        Setting  up auth cookies
             ResponseCookie authCookie = ResponseCookie.from("token", token).maxAge(6000).build();
             HttpHeaders headers = new HttpHeaders();
@@ -91,10 +96,12 @@ public class AuthService {
                 new UsernamePasswordAuthenticationToken(loginRequest.email(),loginRequest.password())
         );
 
-        customerRepository.findByEmail(loginRequest.email())
+       Customer customer= customerRepository.findByEmail(loginRequest.email())
                 .orElseThrow(()-> new UsernameNotFoundException("Customer not found,please try again"));
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("email",customer.getEmail());
 
-        String token= jwtService.generateToken(authentication);
+        String token= jwtService.generateToken(claims,userDetails);
 
 //        Setting  up auth cookies
         ResponseCookie authCookie=ResponseCookie.from("token",token).maxAge(6000).build();

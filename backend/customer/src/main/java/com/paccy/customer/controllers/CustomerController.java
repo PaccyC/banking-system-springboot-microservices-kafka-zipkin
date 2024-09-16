@@ -30,7 +30,7 @@ public class CustomerController {
 
 
 
-@GetMapping("/current")
+ @GetMapping("/current")
     public ResponseEntity<Optional<Customer>> getCurrentCustomer() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        Checking if we get principal and current authentication status

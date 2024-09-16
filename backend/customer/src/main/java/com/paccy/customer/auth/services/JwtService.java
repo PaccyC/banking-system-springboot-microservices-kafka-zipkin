@@ -59,16 +59,17 @@ public class JwtService {
       byte[] keyBytes = Decoders.BASE64URL.decode(SECRET_KEY);
       return Keys.hmacShaKeyFor(keyBytes);
     }
-    public String generateToken(Authentication authentication) {
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        String roles = populateAuthorities(authorities);
+    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+//        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+//        String roles = populateAuthorities(authorities);
 
-        System.out.println(roles);
+//        System.out.println(roles);
         // Include roles in the token claims
         String token = Jwts.builder()
-                .claim("user", authentication.getPrincipal())
-                .claim("username",authentication.getName())
-                .claim("authorities", roles)  // Make sure "authorities" is added
+//                .claim("user", authentication.getPrincipal())
+//                .claim("username",authentication.getName())
+//                .claim("authorities", roles)  // Make sure "authorities" is added
+                .setClaims(extraClaims).setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))  // 1 day expiration
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
