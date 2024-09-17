@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.paccy</groupId>
-	<artifactId>customer-account</artifactId>
+	<artifactId>transaction</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>customer-account</name>
-	<description>Account Service</description>
+	<name>transaction</name>
+	<description>Transaction Service</description>
 	<url/>
 	<licenses>
 		<license/>
