@@ -3,9 +3,12 @@ package com.paccy.customer_account.controllers;
 import com.paccy.customer_account.entities.Account;
 import com.paccy.customer_account.services.AccountService;
 import com.paccy.customer_account.utils.CreateAccountRequest;
+import com.paccy.customer_account.utils.UpdateAccountRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/account")
@@ -20,5 +23,32 @@ public class AccountController {
             @RequestHeader("Authorization") String token
     ){
         return  ResponseEntity.ok(accountService.createAccountForCurrentCustomer(createAccountRequest,token));
+    }
+
+    @GetMapping("/{id}")
+    public  ResponseEntity<Account> getAccountById(
+            @PathVariable("id") Integer accountId
+    ){
+        return ResponseEntity.ok(accountService.getCustomerAccountById(accountId));
+    }
+    @GetMapping
+    public ResponseEntity<List<Account>> getAllAccounts(
+            @RequestHeader("Authorization") String token
+    ){
+        return  ResponseEntity.ok(accountService.getAllAccountOfCustomer(token));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Account> updateAccount(
+            @PathVariable("id") Integer accountId,
+            @RequestBody UpdateAccountRequest updateAccountRequest
+    ){
+        return ResponseEntity.ok(accountService.updateAccount(accountId,updateAccountRequest));
+    }
+
+    public ResponseEntity<String> deleteAccount(
+            @PathVariable("id") Integer accountId
+    ){
+        return ResponseEntity.ok(accountService.deleteAccount(accountId));
     }
 }
