@@ -41,14 +41,17 @@ public class AccountController {
     @PutMapping("/{id}")
     public ResponseEntity<Account> updateAccount(
             @PathVariable("id") Integer accountId,
+            @RequestHeader("Authorization") String token,
             @RequestBody UpdateAccountRequest updateAccountRequest
     ){
-        return ResponseEntity.ok(accountService.updateAccount(accountId,updateAccountRequest));
+        return ResponseEntity.ok(accountService.updateAccount(accountId,updateAccountRequest,token));
     }
 
     public ResponseEntity<String> deleteAccount(
-            @PathVariable("id") Integer accountId
-    ){
-        return ResponseEntity.ok(accountService.deleteAccount(accountId));
+            @PathVariable("id") Integer accountId,
+            @RequestHeader("Authorization") String token
+
+            ){
+        return ResponseEntity.ok(accountService.deleteAccount(accountId,token));
     }
 }

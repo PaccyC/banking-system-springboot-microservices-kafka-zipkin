@@ -4,6 +4,7 @@ import com.paccy.customer_account.customer.CustomerClient;
 import com.paccy.customer_account.customer.CustomerResponse;
 import com.paccy.customer_account.entities.Account;
 import com.paccy.customer_account.exceptions.AccountNotFoundException;
+import com.paccy.customer_account.exceptions.NotAuthorizedException;
 import com.paccy.customer_account.repository.AccountRepository;
 import com.paccy.customer_account.utils.CreateAccountRequest;
 import com.paccy.customer_account.utils.UpdateAccountRequest;
@@ -21,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.crypto.SecretKey;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -67,10 +69,16 @@ public class AccountService {
       return  null;
     }
 
-    public Account updateAccount(Integer accountId,UpdateAccountRequest updateAccountRequest) {
+    public Account updateAccount(Integer accountId,UpdateAccountRequest updateAccountRequest,String token) {
+        CustomerResponse customer= customerClient.getCurrentCustomer(token);
+
+
         var account= accountRepository.findById(accountId).orElseThrow(
                 ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
         );
+        if (!Objects.equals(customer.getId(), account.getCustomerId())){
+        throw  new NotAuthorizedException("Not allowed to edit this account!");
+        }
 
         account.setCurrency(updateAccountRequest.currency());
         account.setUpdateDate(LocalDate.now());
@@ -79,7 +87,17 @@ public class AccountService {
 
     }
 
-    public String deleteAccount(Integer accountId) {
+    public String deleteAccount(Integer accountId,String token) {
+        CustomerResponse customer= customerClient.getCurrentCustomer(token);
+//Check if the current user, is the owner of the account
+        var account= accountRepository.findById(accountId).orElseThrow(
+                ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
+        );
+        if (!Objects.equals(customer.getId(), account.getCustomerId())){
+            throw  new NotAuthorizedException("Not allowed to edit this account!");
+        }
+
+
         accountRepository.deleteById(accountId);
         return  "Account deleted successfully";
     }
