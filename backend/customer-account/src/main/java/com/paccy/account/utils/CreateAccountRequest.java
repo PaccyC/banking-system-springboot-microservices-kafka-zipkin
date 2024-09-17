@@ -1,6 +1,6 @@
-package com.paccy.transaction.utils;
+package com.paccy.account.utils;
 
-import com.paccy.transaction.entities.AccountType;
+import com.paccy.account.entities.AccountType;
 
 public record CreateAccountRequest(
         Integer customerId,

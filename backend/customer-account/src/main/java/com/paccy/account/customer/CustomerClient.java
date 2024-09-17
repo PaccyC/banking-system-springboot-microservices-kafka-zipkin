@@ -1,4 +1,4 @@
-package com.paccy.transaction.customer;
+package com.paccy.account.customer;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

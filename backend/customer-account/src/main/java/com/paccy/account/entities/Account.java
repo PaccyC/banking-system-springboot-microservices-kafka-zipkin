@@ -1,4 +1,4 @@
-package com.paccy.transaction.entities;
+package com.paccy.account.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

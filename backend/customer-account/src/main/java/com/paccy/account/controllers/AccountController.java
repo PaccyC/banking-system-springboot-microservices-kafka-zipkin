@@ -1,9 +1,9 @@
-package com.paccy.transaction.controllers;
+package com.paccy.account.controllers;
 
-import com.paccy.transaction.entities.Account;
-import com.paccy.transaction.services.AccountService;
-import com.paccy.transaction.utils.CreateAccountRequest;
-import com.paccy.transaction.utils.UpdateAccountRequest;
+import com.paccy.account.entities.Account;
+import com.paccy.account.utils.CreateAccountRequest;
+import com.paccy.account.utils.UpdateAccountRequest;
+import com.paccy.account.services.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

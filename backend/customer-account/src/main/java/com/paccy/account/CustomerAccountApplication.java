@@ -1,4 +1,4 @@
-package com.paccy.transaction;
+package com.paccy.account;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

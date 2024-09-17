@@ -1,4 +1,4 @@
-package com.paccy.transaction.config;
+package com.paccy.account.config;
 
 
 import org.springframework.context.annotation.Bean;

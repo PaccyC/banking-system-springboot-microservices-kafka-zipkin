@@ -1,13 +1,13 @@
-package com.paccy.transaction.services;
+package com.paccy.account.services;
 
-import com.paccy.transaction.customer.CustomerClient;
-import com.paccy.transaction.customer.CustomerResponse;
-import com.paccy.transaction.entities.Account;
-import com.paccy.transaction.exceptions.AccountNotFoundException;
-import com.paccy.transaction.exceptions.NotAuthorizedException;
-import com.paccy.transaction.repository.AccountRepository;
-import com.paccy.transaction.utils.CreateAccountRequest;
-import com.paccy.transaction.utils.UpdateAccountRequest;
+import com.paccy.account.customer.CustomerClient;
+import com.paccy.account.customer.CustomerResponse;
+import com.paccy.account.entities.Account;
+import com.paccy.account.exceptions.AccountNotFoundException;
+import com.paccy.account.exceptions.NotAuthorizedException;
+import com.paccy.account.repository.AccountRepository;
+import com.paccy.account.utils.CreateAccountRequest;
+import com.paccy.account.utils.UpdateAccountRequest;
 
 import lombok.RequiredArgsConstructor;
 
@@ -61,7 +61,7 @@ public class AccountService {
       return  null;
     }
 
-    public Account updateAccount(Integer accountId,UpdateAccountRequest updateAccountRequest,String token) {
+    public Account updateAccount(Integer accountId, UpdateAccountRequest updateAccountRequest, String token) {
         CustomerResponse customer= customerClient.getCurrentCustomer(token);
 
 

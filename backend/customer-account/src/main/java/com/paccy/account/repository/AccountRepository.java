@@ -1,6 +1,6 @@
-package com.paccy.transaction.repository;
+package com.paccy.account.repository;
 
-import com.paccy.transaction.entities.Account;
+import com.paccy.account.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

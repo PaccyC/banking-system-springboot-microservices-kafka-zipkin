@@ -1,4 +1,4 @@
-package com.paccy.transaction.customer;
+package com.paccy.account.customer;
 
 
 import lombok.Data;
