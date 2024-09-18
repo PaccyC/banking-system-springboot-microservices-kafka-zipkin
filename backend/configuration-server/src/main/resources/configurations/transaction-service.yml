@@ -16,5 +16,12 @@ spring:
       enabled: true
     livereload:
       enabled: true
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
 server:
   port: 8070

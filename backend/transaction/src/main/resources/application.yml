@@ -5,7 +5,9 @@ spring:
   application:
     name: transaction-service
 
-
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
 logging:
   level:
     org.springframework: DEBUG
