@@ -54,4 +54,15 @@ public class AccountController {
             ){
         return ResponseEntity.ok(accountService.deleteAccount(accountId,token));
     }
+
+    @PutMapping("/update-balance/{id}")
+    public ResponseEntity<Void> updateAccountBalance(
+            @PathVariable("id") Integer accountId,
+            @RequestParam Double newBalance,
+            @RequestHeader("Authorization") String token
+    ){
+
+        accountService.updateBalance(accountId,newBalance,token);
+        return ResponseEntity.ok().build();
+    }
 }

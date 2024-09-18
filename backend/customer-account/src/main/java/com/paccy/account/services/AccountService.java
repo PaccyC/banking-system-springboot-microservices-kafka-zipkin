@@ -93,4 +93,16 @@ public class AccountService {
         accountRepository.deleteById(accountId);
         return  "Account deleted successfully";
     }
+
+    public void updateBalance(Integer accountId, Double newBalance,String token) {
+        CustomerResponse customer= customerClient.getCurrentCustomer(token);
+          //Check if the current user, is the owner of the account
+        var account= accountRepository.findById(accountId).orElseThrow(
+                ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
+        );
+        if (!Objects.equals(customer.getId(), account.getCustomerId())){
+            throw  new NotAuthorizedException("Not allowed to edit this account!");
+        }
+        account.setBalance(newBalance);
+    }
 }
