@@ -20,8 +20,7 @@ public class AccountController {
     @PostMapping("/create")
     public ResponseEntity<Account> createAccount(
             @RequestBody CreateAccountRequest createAccountRequest,
-            @RequestHeader("Authorization") String token
-    ){
+            @RequestHeader("Authorization") String token){
         return  ResponseEntity.ok(accountService.createAccountForCurrentCustomer(createAccountRequest,token));
     }
 

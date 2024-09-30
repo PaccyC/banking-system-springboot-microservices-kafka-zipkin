@@ -17,6 +17,14 @@ spring:
     livereload:
       enabled: true
 
+  kafka:
+    producer:
+      bootstrap-servers: 9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: transactionConfirmation:com.paccy.transaction.TransactionConfirmation
+
 
 springdoc:
   swagger-ui:

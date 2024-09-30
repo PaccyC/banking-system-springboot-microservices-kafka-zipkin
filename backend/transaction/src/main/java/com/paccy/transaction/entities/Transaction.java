@@ -20,9 +20,10 @@ public class Transaction {
     )
     private Integer id;
     private String transactionId;
-    private String fromAccount;
-    private String toAccount;
-    private BigDecimal amount;
+    private Integer fromAccount;
+    private Integer toAccount;
+    private Double amount;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 }

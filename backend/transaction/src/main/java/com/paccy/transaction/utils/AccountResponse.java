@@ -7,4 +7,5 @@ public record AccountResponse(
         String currency,
         Double balance
 ) {
+
 }
