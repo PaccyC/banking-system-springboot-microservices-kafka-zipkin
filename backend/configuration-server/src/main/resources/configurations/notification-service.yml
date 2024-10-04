@@ -1,0 +1,31 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/transaction-notification
+
+  kafka:
+    consumer:
+      bootstrap-servers: 9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages:  "com.paccy.banking_system.transaction.kafka, com.paccy.banking_system.notification_service.kafka.transaction"
+        spring.json.type.mapping: transactionSuccessMessage:com.paccy.banking_system.transaction.kafka.TransactionSuccessMessage
+
+  mail:
+    port: 1025
+    host: localhost
+    properties:
+      smtp:
+        trust: "*"
+        auth: false
+        starttls:
+          enabled: false
+
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+
+server:
+  port: 8040

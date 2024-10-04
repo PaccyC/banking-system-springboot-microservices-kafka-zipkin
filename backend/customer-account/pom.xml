@@ -8,12 +8,13 @@
 		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.paccy</groupId>
+	<groupId>com.paccy.banking_system</groupId>
 	<artifactId>customer-account</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>customer-account</name>
 	<description>Account Service</description>
 	<url/>
+
 	<licenses>
 		<license/>
 	</licenses>

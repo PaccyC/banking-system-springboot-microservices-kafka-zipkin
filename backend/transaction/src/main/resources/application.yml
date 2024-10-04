@@ -4,9 +4,18 @@ spring:
   application:
     name: transaction-service
 
+
+
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: transactionConfirmation:com.paccy.transaction.TransactionConfirmation
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-logging:
-  level:
-    org.springframework: DEBUG
