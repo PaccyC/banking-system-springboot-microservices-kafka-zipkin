@@ -8,18 +8,19 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class TransactionProducer {
-    private final KafkaTemplate<String, TransactionSuccessMessage> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendTransactionConfirmation(TransactionSuccessMessage transactionSuccessMessage) {
+    public void sendTransactionConfirmation() {
 
         log.info("Sending transaction confirmation ...");
 
-        Message<TransactionSuccessMessage> message= MessageBuilder
-                .withPayload(transactionSuccessMessage)
+        Message<String> message= MessageBuilder
+                .withPayload("Message sent successfully")
                 .setHeader(KafkaHeaders.TOPIC,"transaction-topic")
                 .build();
 

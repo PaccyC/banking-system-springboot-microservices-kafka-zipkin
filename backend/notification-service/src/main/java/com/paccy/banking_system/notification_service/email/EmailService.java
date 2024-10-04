@@ -1,11 +1,11 @@
 package com.paccy.banking_system.notification_service.email;
 
-
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -26,22 +26,26 @@ public class EmailService {
     private final JavaMailSender mailSender;
     private final TemplateEngine templateEngine;
 
-
     @Async
-    public void sendTransactionEmail(
-            Double amount,
-            String transactionId
-    ) throws MessagingException {
+    public void sendTransactionEmail(String message) throws MessagingException {
+        // Explicitly set the SMTP host and port
+        if (mailSender instanceof JavaMailSenderImpl) {
+            JavaMailSenderImpl javaMailSender = (JavaMailSenderImpl) mailSender;
+            javaMailSender.setHost("localhost");
+            javaMailSender.setPort(1025);  // Set to your desired port (Maildev is typically on 1025)
+        }
+
         MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+        MimeMessageHelper messageHelper = new MimeMessageHelper(
+                mimeMessage,
+                MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+                StandardCharsets.UTF_8.name()
+        );
         messageHelper.setTo("paccy@gmail.com");
 
         final String templateName = EmailTemplate.TRANSACTION_CONFIRMATION.getTemplateName();
 
         Map<String, Object> variables = new HashMap<>();
-
-        variables.put("amount", amount);
-
         Context context = new Context();
         context.setVariables(variables);
 
@@ -57,8 +61,5 @@ public class EmailService {
         } catch (MessagingException e) {
             log.error(format("Email sent to %s failed", "paccy@gmail.com"), e);
         }
-
-
     }
-
 }

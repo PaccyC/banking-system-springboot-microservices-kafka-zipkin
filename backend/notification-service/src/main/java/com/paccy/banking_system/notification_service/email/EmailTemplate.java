@@ -5,7 +5,7 @@ import lombok.Getter;
 public enum EmailTemplate {
 
 
-    TRANSACTION_CONFIRMATION("Transaction confirmation","/templates/transactionConfirmation.html");
+    TRANSACTION_CONFIRMATION("transactionConfirmation","/templates/transactionConfirmation.html");
 
     @Getter
     private String templateName;

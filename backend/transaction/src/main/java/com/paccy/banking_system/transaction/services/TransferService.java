@@ -44,14 +44,7 @@ public class TransferService {
 
 
 
-        transactionProducer.sendTransactionConfirmation(
-                new TransactionSuccessMessage(
-                        transaction.getTransactionId(),
-                        transaction.getToAccount(),
-                        transaction.getAmount(),
-                        transaction.getStatus()
-                )
-        );
+        transactionProducer.sendTransactionConfirmation();
 
         return transactionRepository.save(transaction);
 

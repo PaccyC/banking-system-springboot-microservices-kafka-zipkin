@@ -20,27 +20,24 @@ public class TransactionConsumer {
 private final NotificationRepository notificationRepository;
 private final EmailService emailService;
 
-@KafkaListener(topics = "transaction-topic")
-public void consumeTransactionSuccessNotification( TransactionSuccessMessage transactionSuccessMessage) throws MessagingException {
+@KafkaListener(topics = "transaction-topic",groupId = "transaction-group-1")
+public void consumeTransactionSuccessNotification( String message) throws MessagingException {
     log.info("Consuming transaction success notification");
-    log.info("Received transaction: {}", transactionSuccessMessage);
+    log.info("Received transaction: {}", message);
 
     Notification notification= Notification
             .builder()
             .notificationTime(LocalDateTime.now())
-            .transactionConfirmation(transactionSuccessMessage)
+            .message(message)
+            .notificationTime(LocalDateTime.now())
             .build();
-    log.info("Saving notification for transaction: {}", transactionSuccessMessage.transactionId());
+    log.info("Saving notification for transaction:");
     notificationRepository.save(notification);
     log.info("Notification saved successfully");
 
 //    Sending an email
 
-    emailService.sendTransactionEmail(
-            transactionSuccessMessage.amount(),
-            transactionSuccessMessage.transactionId()
-
-    );
+    emailService.sendTransactionEmail(message );
 
 
 

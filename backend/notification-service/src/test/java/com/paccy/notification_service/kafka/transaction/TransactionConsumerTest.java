@@ -30,7 +30,7 @@ public class TransactionConsumerTest {
     @Test
     public void testSendEmail() throws MessagingException, jakarta.mail.MessagingException {
         // Mock the behavior of sendTransactionEmail if necessary
-        doNothing().when(emailService).sendTransactionEmail(100.0,"test-transaction-id" );
+        doNothing().when(emailService).sendTransactionEmail("message sent !!!");
 
 
     }

@@ -22,5 +22,5 @@ public class Notification {
     @Id
     private String id;
     private LocalDateTime notificationTime;
-    private TransactionSuccessMessage transactionConfirmation;
+    private String message;
 }

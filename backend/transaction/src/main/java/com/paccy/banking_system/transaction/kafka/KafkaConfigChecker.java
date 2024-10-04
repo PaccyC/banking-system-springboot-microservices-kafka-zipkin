@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaConfigChecker {
 
+
     @Value("${spring.kafka.producer.bootstrap-servers}")
     private String bootstrapServers;
 

@@ -13,6 +13,16 @@ services:
     networks:
       - microservices-net
 
+networks:
+  microservices-net:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  mongo_data:
+
+
+
 #  mysql-db:
 #    container_name: ms-mysql-db
 #    image: mysql:8.0
@@ -84,11 +94,3 @@ services:
 #    networks:
 #      - microservices-net
 
-
-networks:
-  microservices-net:
-    driver: bridge
-
-volumes:
-  mysql_data:
-  mongo_data:
