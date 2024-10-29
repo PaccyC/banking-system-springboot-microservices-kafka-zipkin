@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0bbbf3f-fd8b-49e9-8af6-ca11875b2ca8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,9 +54,11 @@
     "Spring Boot.DiscoveryApplication.executor": "Run",
     "Spring Boot.DiscoveryServerApplication.executor": "Run",
     "Spring Boot.ProductApplication.executor": "Run",
+    "Spring Boot.TransactionApplication.executor": "Run",
+    "Spring Boot.TransactionsApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/paccy/Desktop/codes/banking-system/backend/transactions/pom.xml",
+    "last_opened_file_path": "/home/paccy/Desktop/codes/banking-system/backend/transaction/pom.xml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,7 +103,7 @@
     <configuration name="CustomerAccountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="customer-account" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.customer_account.CustomerAccountApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transaction.CustomerAccountApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -124,10 +128,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransactionsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="TransactionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="transactions" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transactions.TransactionsApplication" />
+      <module name="transaction" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transaction.TransactionApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="transaction" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transaction.TransactionApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,7 +182,7 @@
       <workItem from="1726314530439" duration="5310000" />
       <workItem from="1726384280918" duration="13034000" />
       <workItem from="1726460594788" duration="4313000" />
-      <workItem from="1726552219708" duration="6674000" />
+      <workItem from="1726552219708" duration="16102000" />
     </task>
     <servers />
   </component>
