@@ -41,6 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Docker.transaction/Dockerfile.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -48,17 +49,20 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.ConfigurationServerApplication.executor": "Run",
+    "Spring Boot.CustomerAccountApplication (1).executor": "Run",
     "Spring Boot.CustomerAccountApplication.executor": "Run",
+    "Spring Boot.CustomerApplication (1).executor": "Run",
     "Spring Boot.CustomerApplication.executor": "Run",
     "Spring Boot.CustomerServiceApplication.executor": "Run",
     "Spring Boot.DiscoveryApplication.executor": "Run",
     "Spring Boot.DiscoveryServerApplication.executor": "Run",
     "Spring Boot.ProductApplication.executor": "Run",
+    "Spring Boot.TransactionApplication (1).executor": "Run",
     "Spring Boot.TransactionApplication.executor": "Run",
     "Spring Boot.TransactionsApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/paccy/Desktop/codes/banking-system/backend/transaction/pom.xml",
+    "last_opened_file_path": "/home/paccy/Desktop/codes/banking-system/backend/transaction",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,7 +78,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/backend/services/config-server/src/main/resources/configurations" />
+      <recent name="$PROJECT_DIR$/backend/transaction" />
+      <recent name="$PROJECT_DIR$/backend/notification-service" />
+      <recent name="$PROJECT_DIR$/backend/customer-account" />
+      <recent name="$PROJECT_DIR$/backend/discovery-server" />
+      <recent name="$PROJECT_DIR$/backend/configuration-server" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -86,7 +94,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CustomerApplication">
+  <component name="RunManager" selected="Docker.transaction/Dockerfile">
     <configuration name="ConfigurationServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="configuration-server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.configuration_server.ConfigurationServerApplication" />
@@ -100,10 +108,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CustomerAccountApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="customer-account" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.banking_system.account.CustomerAccountApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CustomerAccountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="customer-account" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transaction.CustomerAccountApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="customer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.banking_system.customer.CustomerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,6 +152,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="notification-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.banking_system.notification_service.NotificationServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="transaction" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.banking_system.transaction.TransactionApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TransactionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="transaction" />
@@ -143,11 +181,25 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="transaction/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildOnly" value="true" />
+          <option name="sourceFilePath" value="backend/transaction/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.CustomerApplication" />
+        <item itemvalue="Docker.transaction/Dockerfile" />
         <item itemvalue="Spring Boot.ConfigurationServerApplication" />
+        <item itemvalue="Spring Boot.CustomerApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -183,6 +235,8 @@
       <workItem from="1726384280918" duration="13034000" />
       <workItem from="1726460594788" duration="4313000" />
       <workItem from="1726552219708" duration="16102000" />
+      <workItem from="1730226023719" duration="159000" />
+      <workItem from="1730262943942" duration="14071000" />
     </task>
     <servers />
   </component>

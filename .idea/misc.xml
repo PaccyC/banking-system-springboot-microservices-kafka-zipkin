@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/backend/customer-account/pom.xml" />
         <option value="$PROJECT_DIR$/backend/transactions/pom.xml" />
         <option value="$PROJECT_DIR$/backend/transaction/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/notification-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

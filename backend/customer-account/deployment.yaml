@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-account-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-account-service
+
+  template:
+    metadata:
+      labels:
+        app: customer-account-service
+
+    spec:
+      containers:
+        - name: customer-account-service
+          image: ""
+          ports:
+            - containerPort: 8060
+
