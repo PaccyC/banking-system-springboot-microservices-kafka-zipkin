@@ -32,7 +32,6 @@ const ForgotPassword = () => {
 
                 </div>
                 <button className=" font-semibold text-[16px] leading-6 font-inter bg-primary-1 rounded-lg text-white px-3 py-3">Password Reset</button>
-
                 <Link 
                  className=" font-inter font-semibold text-gray-1 text-[16px] text-center"
                  to="/auth/login">
