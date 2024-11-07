@@ -8,7 +8,7 @@ const onSubmit =()=>{
 const Login = () => {
   const [showPassword, setShowPassword]= useState(false)
   return (
-    <div className=" flex flex-col gap-12 justify-center min-w-[400px] ">
+    <div className=" flex flex-col gap-12 justify-center md:min-w-[400px] py-16 ">
       <div className=" flex justify-center">
 
         <img 

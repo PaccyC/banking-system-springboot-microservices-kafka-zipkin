@@ -63,15 +63,9 @@ const Signup = () => {
 
         </div>
       <div className="flex flex-col gap-2">
-        <div className=" flex w-full justify-between">
+        
           <label className=" font-medium font-inter text-dark-4 text-[16px]">Password</label>
-          <Link 
-          to="/forgot-password"
-          className=" text-primary-1 font-inter font-medium text-[16px]"
-          >
-                Forgot Password?
-          </Link>
-        </div>
+       
         <div className="relative">
     <input
       type={showPassword ? "text" : "password"}
@@ -147,7 +141,7 @@ const Signup = () => {
        </button>
 
 
-       <p className=" font-inter text-gray-1 text-center">Already have an account? <Link to="/auth/signin" className=" text-primary-1 font-semibold font-inter">Sign in here</Link></p>
+       <p className=" font-inter text-gray-1 text-center">Already have an account? <Link to="/auth/login" className=" text-primary-1 font-semibold font-inter">Sign in here</Link></p>
       </div>
     </form>
   </div>
