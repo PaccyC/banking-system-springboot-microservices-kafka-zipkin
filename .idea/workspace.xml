@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0bbbf3f-fd8b-49e9-8af6-ca11875b2ca8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/icons/Bill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/icons/Expencces.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/icons/Goal.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/icons/Overview.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/icons/Settings.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/icons/Transaction.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/icons/wallet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/layout/AuthLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/layout/RootLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/tailwind.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +42,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -38,41 +57,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Docker.transaction/Dockerfile.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.ConfigurationServerApplication.executor": "Run",
-    "Spring Boot.CustomerAccountApplication (1).executor": "Run",
-    "Spring Boot.CustomerAccountApplication.executor": "Run",
-    "Spring Boot.CustomerApplication (1).executor": "Run",
-    "Spring Boot.CustomerApplication.executor": "Run",
-    "Spring Boot.CustomerServiceApplication.executor": "Run",
-    "Spring Boot.DiscoveryApplication.executor": "Run",
-    "Spring Boot.DiscoveryServerApplication.executor": "Run",
-    "Spring Boot.ProductApplication.executor": "Run",
-    "Spring Boot.TransactionApplication (1).executor": "Run",
-    "Spring Boot.TransactionApplication.executor": "Run",
-    "Spring Boot.TransactionsApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/paccy/Desktop/codes/banking-system/backend/transaction",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.transaction/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ConfigurationServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CustomerAccountApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CustomerAccountApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CustomerApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CustomerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CustomerServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscoveryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscoveryServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TransactionApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TransactionApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TransactionsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/paccy/Desktop/codes/banking-system/backend/transaction&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/paccy/Desktop/codes/banking-system/frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -116,31 +140,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerAccountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="customer-account" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transaction.CustomerAccountApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CustomerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="customer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.banking_system.customer.CustomerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="customer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.customer.CustomerApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.paccy.customer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,24 +169,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransactionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="transaction" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transaction.TransactionApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TransactionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="transaction" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paccy.transaction.TransactionApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="transaction/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
@@ -197,9 +186,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.transaction/Dockerfile" />
         <item itemvalue="Spring Boot.ConfigurationServerApplication" />
-        <item itemvalue="Spring Boot.CustomerApplication" />
+        <item itemvalue="Docker.transaction/Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -237,6 +225,10 @@
       <workItem from="1726552219708" duration="16102000" />
       <workItem from="1730226023719" duration="159000" />
       <workItem from="1730262943942" duration="14071000" />
+      <workItem from="1730375929159" duration="581000" />
+      <workItem from="1730881999737" duration="2676000" />
+      <workItem from="1730898249166" duration="4897000" />
+      <workItem from="1730914326783" duration="908000" />
     </task>
     <servers />
   </component>
@@ -245,5 +237,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
