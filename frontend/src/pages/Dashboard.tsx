@@ -277,7 +277,16 @@ function Dashboard() {
       </div>
       {/* Statistics and Expense breakdown */}
 
-      <div className=""></div>
+      <div className="col-span-2 flex flex-col gap-6">
+        <div className=" flex flex-col gap-2" >
+          <h3 className="font-inter font-normal text-[22px] text-gray-1">Statistics</h3>
+         <div className="bg-white flex flex-col gap-8 rounded-[8px] min-h-[200px] flex-grow py-5 px-6"></div>
+        </div>
+        <div className=" flex flex-col gap-2" >
+          <h3 className="font-inter font-normal text-[22px] text-gray-1">Expenses Breakdown</h3>
+         <div className="bg-white flex flex-col gap-8 rounded-[8px] min-h-[200px] flex-grow py-5 px-6"></div>
+        </div>
+      </div>
      </div>
      
     </div>
