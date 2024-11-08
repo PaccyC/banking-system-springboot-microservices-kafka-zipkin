@@ -6,11 +6,11 @@ const Sidebar = () => {
   const {pathname}= useLocation();
   
   return (
-    <div className=" bg-dark-1 md:w-64 px-8 py-6 flex  flex-col justify-between">
+    <div className=" bg-dark-1 md:min-w-64 px-8 py-6 hidden lg:flex  flex-col justify-between">
       <div className=" flex flex-col gap-12">
       <h2 className=" text-white font-inter text-2xl text-center"><span className=" font-bold">FINE</span>bank.<span className=" font-bold">IO</span></h2>
 
-      <ul className=" flex flex-col gap-4">
+      <ul className=" flex flex-col gap-4 ">
           {sidebarLinks.map((link)=>{
             const isActive= pathname === link.route
             return(

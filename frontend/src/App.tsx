@@ -7,6 +7,11 @@ import ForgotPassword from './pages/ForgotPassword'
 
 import RootLayout from './layout/RootLayout'
 import Dashboard from './pages/Dashboard'
+import Balances from './pages/Balances'
+import Goals from './pages/Goals'
+import Bills from './pages/Bills'
+import Transactions from './pages/Transactions'
+import Expenses from './pages/Expenses'
 function App() {
 
 
@@ -24,6 +29,12 @@ function App() {
 
         <Route element={<RootLayout/>}>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/balances' element={<Balances/>}/>
+        <Route path='/goals' element={<Goals/>}/>
+        <Route path='/bills' element={<Bills/>}/>
+        <Route path='/transactions' element={<Transactions/>}/>
+        <Route path='/expenses' element={<Expenses/>}/>
+      
 
         </Route>
       </Routes>
