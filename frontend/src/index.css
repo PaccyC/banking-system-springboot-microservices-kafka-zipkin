@@ -3,3 +3,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.active-link::after{
+    content: "";
+    display: block;
+    width: 90%;
+    height: 3px;
+    background-color: #299D91;
+    margin-top: 16px; 
+    transform: scaleX(1.5); 
+    transition: all 0.3s ease;
+
+}
