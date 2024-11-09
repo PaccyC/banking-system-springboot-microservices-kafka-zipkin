@@ -11,7 +11,7 @@ const TransactionDetail = ({image,itemName,shopName,amount,date}:TransactionDeta
   return (
     <div className=" w-full flex justify-between items-center">
         <div className=" flex gap-3">
-            <div className=" h-10 w-10 bg-light-gray-3 rounde-[8px] flex items-center justify-center self-start">
+            <div className=" h-10 w-10 bg-light-gray-3 rounde-[8px] flex items-center justify-center self-start rounded-[8px]">
                 <img 
                 src={image} 
                 height={24}
