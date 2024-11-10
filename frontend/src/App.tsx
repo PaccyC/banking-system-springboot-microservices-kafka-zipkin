@@ -12,6 +12,7 @@ import Goals from './pages/Goals'
 import Bills from './pages/Bills'
 import Transactions from './pages/Transactions'
 import Expenses from './pages/Expenses'
+import AccountDetails from './pages/AccountDetails'
 function App() {
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/bills' element={<Bills/>}/>
         <Route path='/transactions' element={<Transactions/>}/>
         <Route path='/expenses' element={<Expenses/>}/>
+        <Route path='/account-details' element={<AccountDetails/>}/>
       
 
         </Route>

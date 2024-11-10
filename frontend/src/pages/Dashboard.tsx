@@ -2,7 +2,6 @@ import { MdArrowOutward } from "react-icons/md";
 import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 import { useState } from "react";
 import { FiEdit3 } from "react-icons/fi";
-import { transactionLinks } from "../utils/transactionLinks";
 import TransactionDetail from "../components/TransactionDetail";
 import { GoalsChart } from "../charts/GoalsChart";
 import { StatisticsChart } from "../charts/StatisticsChart";
@@ -10,11 +9,11 @@ import { AiOutlineArrowUp } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import EditGoal from "../components/EditGoal";
+import TransactionFilter from "../components/TransactionFilter";
 
 function Dashboard() {
   const totalPages= 3;
   const [currentPage,setCurrentPage]= useState(1);
-  const [isSelected,setIsSelected]= useState("");
   const [isModalOpen,setIsModalOpen]= useState(false)
 
 
@@ -31,10 +30,6 @@ function Dashboard() {
     }
   }
 
-  const handleClick =(value:string)=>{
-    setIsSelected(value)
-
-  }
   return (
     <div className=" relative w-full px-3 py-4 flex flex-1 flex-col gap-6">
      {/* Three grid items */}
@@ -230,15 +225,7 @@ function Dashboard() {
                 View All <IoIosArrowForward size={16}/></p>
         </div>
         <div className="bg-white flex flex-col gap-8 rounded-[8px] min-h-[200px] flex-grow py-5 px-6">
-         <ul className=" flex gap-6">
-          {transactionLinks.map((link)=>(
-          <li 
-          onClick={()=>handleClick(link.name)}
-          className={` text-gray-3 cursor-pointer font-inter font-bold text-[16px] ${isSelected === link.name ? "active-link text-primary-1":""}`}
-          key={link.type}>{link.name}</li>
-         
-          ))}
-         </ul>
+         <TransactionFilter/>
          <div className=" flex flex-col gap-4">
           <TransactionDetail
           amount={160.00}
@@ -415,7 +402,7 @@ function Dashboard() {
       </div>
      </div>
      {isModalOpen && 
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20">
              <EditGoal closeModal={()=>setIsModalOpen(false)}/>
           </div>
 

@@ -1,6 +1,6 @@
 
 import { FiChevronRight } from "react-icons/fi";
-
+import { useNavigate } from "react-router-dom";
 interface BalanceComponentProps{
     balanceType: string;
     accountNumber: string;
@@ -9,6 +9,7 @@ interface BalanceComponentProps{
     bankImage?: string;
 }
 const BalanceComponent = ({balanceType,accountNumber,totalAmount,bankName,bankImage}:BalanceComponentProps) => {
+    const navigate = useNavigate();
   return (
     <div className=" bg-white min-h-[200px] rounded-[8px] p-6 flex flex-col gap-4">
         <div className=" flex justify-between items-center">
@@ -42,8 +43,10 @@ const BalanceComponent = ({balanceType,accountNumber,totalAmount,bankName,bankIm
             className="font-inter font-normal tet-[14px] text-primary-1"
             >Remove</p>
 
-            <button className=" text-white bg-primary-1 rounded-[4px] py-2 px-5 font-inter font-medium text-[14px] flex gap-2 items-center">
-                Details <FiChevronRight className=" text-white"/>
+            <button 
+            onClick={()=>navigate('/account-details')}
+              className=" text-white bg-primary-1 rounded-[4px] py-2 px-5 font-inter font-medium text-[14px] flex gap-2 items-center">
+              Details <FiChevronRight className=" text-white"/>
             </button>
         </div>
     </div>

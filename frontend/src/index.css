@@ -16,3 +16,7 @@
     transition: all 0.3s ease;
 
 }
+
+table tr:last-child{
+    border-bottom: none;
+}
