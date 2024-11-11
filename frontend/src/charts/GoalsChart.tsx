@@ -30,13 +30,13 @@ export function GoalsChart() {
   const totalVisitors = chartData[0].desktop + chartData[0].mobile
 
   return (
-   <div className="flex-grow h-full">
-    <Card className="flex flex-col border-none h-full">
+   <div className="flex-grow max-h-full h-full">
+    <Card className="flex  flex-col border-none h-[200px]">
     
-      <CardContent className="flex flex-1 items-center pb-0">
+      <CardContent className="flex  overflow-hidden  flex-1 items-center pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square w-full max-w-[250px]"
+          className="mx-auto aspect-square w-full mb-[-100px] max-w-[250px]"
         >
           <RadialBarChart
             data={chartData}

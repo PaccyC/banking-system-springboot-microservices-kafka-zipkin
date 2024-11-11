@@ -5,6 +5,8 @@ interface CloseModalProps{
 } 
 const EditGoal = ({ closeModal }:CloseModalProps) => {
     return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20">
+
         <div className="relative lg:w-[500px] min-h-[200px] bg-white py-12 px-10 rounded-[16px] shadow-lg">
             <RxCross2
                 onClick={closeModal}
@@ -45,6 +47,7 @@ const EditGoal = ({ closeModal }:CloseModalProps) => {
                     </button>
                 </div>
             </form>
+        </div>
         </div>
     );
 };

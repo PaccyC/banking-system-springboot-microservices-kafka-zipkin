@@ -7,7 +7,6 @@ import { GoalsChart } from "../charts/GoalsChart";
 import { StatisticsChart } from "../charts/StatisticsChart";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
-import { AiOutlineArrowDown } from "react-icons/ai";
 import EditGoal from "../components/EditGoal";
 import TransactionFilter from "../components/TransactionFilter";
 
@@ -122,7 +121,7 @@ function Dashboard() {
            <hr className=" h-[2px] bg-light-gray-2"/>
 
            <div className=" flex justify-between flex-grow">
-             <div className=" flex flex-col justify-between">
+             <div className=" flex flex-col gap-10">
               <div className=" flex gap-2">
                 <img 
                 src="/icons/Award.svg" 
@@ -402,9 +401,8 @@ function Dashboard() {
       </div>
      </div>
      {isModalOpen && 
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20">
              <EditGoal closeModal={()=>setIsModalOpen(false)}/>
-          </div>
+         
 
      }
 
