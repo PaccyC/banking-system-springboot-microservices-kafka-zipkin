@@ -30,7 +30,8 @@ export function GoalsChart() {
   const totalVisitors = chartData[0].desktop + chartData[0].mobile
 
   return (
-    <Card className="flex flex-col border-none">
+   <div className="flex-grow h-full">
+    <Card className="flex flex-col border-none h-full">
     
       <CardContent className="flex flex-1 items-center pb-0">
         <ChartContainer
@@ -94,5 +95,7 @@ export function GoalsChart() {
         <p className=" text-dark-1 font-inter font-medium text-[12px]">Target vs Achievement</p>
       </CardFooter>
     </Card>
+
+  </div>
   )
 }
