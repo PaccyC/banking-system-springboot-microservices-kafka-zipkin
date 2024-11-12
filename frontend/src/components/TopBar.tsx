@@ -25,7 +25,7 @@ const TopBar = () => {
 
     {/* Notification and search input */}
       <div className=" flex gap-4 items-center">
-          <img src="/icons/notification_available.svg" width={24} height={24}/>:
+          <img src="/icons/notification_available.svg" width={24} height={24}/>
         
 
           <div className=" px-3 bg-white flex gap-2 items-center h-[48px] w-auto py-2 rounded-[12px]">
