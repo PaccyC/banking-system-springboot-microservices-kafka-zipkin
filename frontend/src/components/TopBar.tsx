@@ -1,11 +1,9 @@
-import { useState } from "react"
-import { IoIosNotifications } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 
 const TopBar = () => {
-  const [notifications,setNotifications]= useState(false)
   const {pathname}= useLocation();
-  setNotifications(true)
+  
+
   return (
     <div className="w-full hidden  lg:flex justify-between items-center px-4 h-[88px] border border-b-[1px] border-b-gray-5 bg-[#F4f5f7]">
       <div className=" flex gap-3 items-center">
@@ -27,9 +25,8 @@ const TopBar = () => {
 
     {/* Notification and search input */}
       <div className=" flex gap-4 items-center">
-          {notifications ? <img src="/icons/notification_available.svg" width={24} height={24}/>:
-          <IoIosNotifications className=" text-[#666666]" size={24}/>
-          }
+          <img src="/icons/notification_available.svg" width={24} height={24}/>:
+        
 
           <div className=" px-3 bg-white flex gap-2 items-center h-[48px] w-auto py-2 rounded-[12px]">
             <input 
