@@ -13,6 +13,7 @@ import Bills from './pages/Bills'
 import Transactions from './pages/Transactions'
 import Expenses from './pages/Expenses'
 import AccountDetails from './pages/AccountDetails'
+import Settings from './pages/Settings'
 function App() {
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/transactions' element={<Transactions/>}/>
         <Route path='/expenses' element={<Expenses/>}/>
         <Route path='/account-details' element={<AccountDetails/>}/>
+        <Route path='/settings' element={<Settings/>}/>
       
 
         </Route>

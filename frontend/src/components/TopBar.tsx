@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 const TopBar = () => {
   const [notifications,setNotifications]= useState(false)
   const {pathname}= useLocation();
+  setNotifications(true)
   return (
     <div className="w-full hidden  lg:flex justify-between items-center px-4 h-[88px] border border-b-[1px] border-b-gray-5 bg-[#F4f5f7]">
       <div className=" flex gap-3 items-center">

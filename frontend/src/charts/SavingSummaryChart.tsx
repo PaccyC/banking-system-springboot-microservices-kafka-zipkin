@@ -1,4 +1,4 @@
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis,ResponsiveContainer, Line} from "recharts";
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis,ResponsiveContainer, Line, LineChart} from "recharts";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "../components/ui/chart";
 import { FiChevronDown } from "react-icons/fi";
@@ -115,13 +115,15 @@ export function SavingSummaryChart() {
                 strokeWidth={3}
                 fillOpacity={1}
               />
-              <Line
-               dataKey="lastMonth"
-               type="linear"
-               stroke="hsla(0, 0%, 82%, 1)"
-               strokeDasharray="4 4"
-               strokeWidth={2}
-               dot={{ r: 4 }} 
+           
+                <Area
+                dataKey="lastMonth"
+                type="natural"
+                fill="transparent"
+                stroke="hsla(0, 0%, 82%, 1)"
+                strokeDasharray="4 4"
+                strokeWidth={2}
+                dot={{ r: 4 }} 
 
               />
             </AreaChart>
