@@ -21,7 +21,15 @@ import {
   // FormMessage,
 } from "../components/ui/form"
 
-const FormSchema = z.object({
+
+
+const Settings = () => {
+  const [selectedTab, setSelectedTab] = useState("account")
+
+  const handleSelectTab = (tabName: string) => {
+    setSelectedTab(tabName)
+  }
+  const FormSchema = z.object({
     username: z.string().min(2, {
       message: "Username must be at least 2 characters.",
     }),
@@ -45,14 +53,6 @@ const FormSchema = z.object({
         ),
       })
     }
-
-const Settings = () => {
-  const [selectedTab, setSelectedTab] = useState("account")
-
-  const handleSelectTab = (tabName: string) => {
-    setSelectedTab(tabName)
-  }
-
   return (
     <div className="bg-white h-[90%] rounded-[8px] w-full p-6 flex justify-between">
       <Tabs 
