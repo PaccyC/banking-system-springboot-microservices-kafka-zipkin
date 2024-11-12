@@ -14,12 +14,13 @@ import { z } from "zod"
 import { toast } from "../hooks/use-toast"
 import {
   Form,
-  // FormControl,
-  // FormField,
-  // FormItem,
-  // FormLabel,
-  // FormMessage,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "../components/ui/form"
+import FileUploader from "../components/FileUploader"
 
 
 
@@ -127,7 +128,7 @@ const Settings = () => {
 
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-      {/* <FormField
+      <FormField
         control={form.control}
         name="username"
         render={({ field }) => (
@@ -136,15 +137,13 @@ const Settings = () => {
             <FormControl>
               <FileUploader
                 fieldChange= {field.onChange}
-                mediaUrl={post?.imageUrl || ""}
-             
               />
             </FormControl>
           
             <FormMessage className=" text-red" />
           </FormItem>
         )}
-      /> */}
+      />
         <Button type="submit">Submit</Button>
       </form>
     </Form>
