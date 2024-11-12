@@ -1,4 +1,4 @@
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis,ResponsiveContainer, Line, LineChart} from "recharts";
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis,ResponsiveContainer} from "recharts";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "../components/ui/chart";
 import { FiChevronDown } from "react-icons/fi";
