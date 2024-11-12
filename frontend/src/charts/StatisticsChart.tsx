@@ -54,8 +54,8 @@ const chartConfig = {
 export function StatisticsChart() {
   const { pathname } = useLocation();
   return (
-    <div className="flex-grow h-full"> {/* Ensures the chart takes available space in the container */}
-      <Card className="border-none h-full"> {/* Use h-full to make Card take full height */}
+    <div className="flex-grow h-full">
+      <Card className="border-none h-full"> 
         <CardHeader>
           <div className="flex justify-between w-full items-center">
             <div className="flex gap-2 items-center">

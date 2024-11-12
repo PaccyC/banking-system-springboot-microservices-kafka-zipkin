@@ -36,7 +36,7 @@ export function GoalsChart() {
       <CardContent className="flex  overflow-hidden  flex-1 items-center pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square w-full mb-[-100px] max-w-[250px]"
+          className="mx-auto aspect-square w-full mb-[-100px] max-w-[200px]"
         >
           <RadialBarChart
             data={chartData}

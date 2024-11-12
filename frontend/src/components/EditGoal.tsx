@@ -3,7 +3,7 @@ import { RxCross2 } from "react-icons/rx";
 interface CloseModalProps{
     closeModal: () => void;
 } 
-const EditGoal = ({ closeModal }:CloseModalProps) => {
+const EditGoal = ({closeModal}:CloseModalProps) => {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20">
 

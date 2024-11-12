@@ -2,7 +2,6 @@ import { StatisticsChart } from "../charts/StatisticsChart"
 import ExpenseCard from "../components/ExpenseCard"
 
 import { AiOutlineArrowUp } from "react-icons/ai";
-import { BsArrowRight } from "react-icons/bs";
 import { AiOutlineArrowDown } from "react-icons/ai";
 const Expenses = () => {
   return (

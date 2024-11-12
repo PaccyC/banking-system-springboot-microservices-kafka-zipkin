@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FiEdit3 } from "react-icons/fi";
 
 
@@ -20,8 +19,8 @@ const ExpenseCategory = ({descriptionImage,categoryName,totalAmount,handleClick}
             alt="expense" />
           </div>
          <div className=" flex flex-col gap-1">
-          <p className=" text-gray-3">{categoryName}</p>
-          <h3 className=" text-dark-1">${totalAmount}</h3>
+          <p className=" text-gray-3 font-semibold font-inter text-[16px]">{categoryName}</p>
+          <h3 className=" text-dark-1 font-bold font-inter text-[20px]">${totalAmount}</h3>
          </div> 
         </div>
         <button 

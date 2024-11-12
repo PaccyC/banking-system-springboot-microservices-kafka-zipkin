@@ -4,9 +4,11 @@ import { FiChevronDown, FiEdit3 } from "react-icons/fi"
 import { SavingSummaryChart } from "../charts/SavingSummaryChart"
 import ExpenseCategory from "../components/ExpenseCategory"
 import AdjustGoal from "../components/AdjustGoal"
+import EditGoal from "../components/EditGoal"
 
 const Goals = () => {
   const [isModalOpen,setIsModalOpen]= useState(false)
+  const [isEditGoalModalOpen,setIsEditGoalModalOpen]= useState(false)
   return (
     <div className=" flex flex-col gap-6 w-full relative">
     <div className=" flex flex-col gap-4 w-full">
@@ -58,13 +60,16 @@ const Goals = () => {
              </div>
              <GoalsChart/>
            </div>
-           <button className=" border-[2px] border-primary-1 rounded-[8px] px-8 py-2 self-center text-primary-1 font-semibold font-inter  flex items-center">
+           <button 
+           onClick={()=>setIsEditGoalModalOpen(true)}
+           className=" border-[2px] border-primary-1 rounded-[8px] px-8 py-2 self-center text-primary-1 font-semibold font-inter  flex items-center">
+            
             Adjust Goal 
             <FiEdit3 className=" text-primary-1 ml-3"/>
            </button>
 
           </div>
-        <div className="bg-white min-h-[200px] rounded-[8px] shadow-lg col-span-2 p-6">
+        <div className="bg-white min-h-[200px] rounded-[8px] shadow-lg max-h-[400px] col-span-2 p-6">
           <SavingSummaryChart/>
         </div>
        </div>
@@ -116,6 +121,11 @@ const Goals = () => {
      {isModalOpen && 
        <AdjustGoal
         closeModal={()=>setIsModalOpen(false)}
+       />
+     }
+        {isEditGoalModalOpen && 
+       <EditGoal
+        closeModal={()=>setIsEditGoalModalOpen(false)}
        />
      }
    
