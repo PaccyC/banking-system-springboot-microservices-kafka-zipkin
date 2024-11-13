@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a0bbbf3f-fd8b-49e9-8af6-ca11875b2ca8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/BalanceComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/BalanceComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/AccountDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/AccountDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,9 +78,14 @@
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "settings.typescriptcompiler",
+    "settings.editor.selected.configurable": "http.proxy",
     "ts.external.directory.path": "/home/paccy/Desktop/codes/banking-system/frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="ReactorSettings">
@@ -216,6 +221,9 @@
       <workItem from="1730898249166" duration="4897000" />
       <workItem from="1730914326783" duration="908000" />
       <workItem from="1731231589007" duration="3193000" />
+      <workItem from="1731441508910" duration="3000" />
+      <workItem from="1731441812098" duration="2297000" />
+      <workItem from="1731478408770" duration="163000" />
     </task>
     <servers />
   </component>

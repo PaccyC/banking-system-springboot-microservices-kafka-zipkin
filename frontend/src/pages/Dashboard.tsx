@@ -9,6 +9,7 @@ import { AiOutlineArrowUp } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
 import EditGoal from "../components/EditGoal";
 import TransactionFilter from "../components/TransactionFilter";
+import React from "react";
 
 function Dashboard() {
   const totalPages= 3;
@@ -32,7 +33,7 @@ function Dashboard() {
   return (
     <div className=" relative w-full px-3 py-4 flex flex-1 flex-col gap-6">
      {/* Three grid items */}
-     <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+     <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 ">
         <div className="flex flex-col justify-start gap-3">
           <h3 className="text-gray-700 font-inter font-normal text-[22px]">
             Total Balance
@@ -215,15 +216,15 @@ function Dashboard() {
 
 
      {/* Transactions,Statistics and expenses breakdown */}
-     <div className=" grid grid-cols-3 gap-4 w-full">
-      <div className=" flex flex-col gap-2 col-span-1">
-        <div className=" flex justify-between">
+     <div className=" grid sm:grid-cols-1 lg:grid-cols-3 gap-4 w-full">
+      <div className=" flex flex-col gap-2 sm:col-span-3 lg:col-span-1">
+        <div className=" flex justify-between w-full">
           <h3 className="font-inter font-normal text-[22px] text-gray-1">Recent Transaction</h3>
           <p
               className="cursor-pointer text-gray-1 font-medium text-[16px]  flex gap-1 items-center">
                 View All <IoIosArrowForward size={16}/></p>
         </div>
-        <div className="bg-white flex flex-col gap-8 rounded-[8px] min-h-[200px] flex-grow py-5 px-6">
+        <div className="bg-white  flex flex-col gap-8 rounded-[8px] min-h-[200px] flex-grow py-5 px-6">
          <TransactionFilter/>
          <div className=" flex flex-col gap-4">
           <TransactionDetail
@@ -293,109 +294,41 @@ function Dashboard() {
             <h3 className="font-inter font-normal text-[22px] text-gray-1">Expenses Breakdown</h3>
             <p className=" cursor-pointer font-inter font-medium text-[14px] text-light-gray-4">*Compare to last month</p>
           </div>
-          <div className="bg-white grid grid-cols-3 gap-4 rounded-[8px] min-h-[200px] flex-grow py-5 px-6">
-  <div className="flex justify-between flex-grow items-center pr-4 border-r-[1px] border-r-light-gray-5 p-4">
-    <div className="flex gap-3">
-      <div className="h-20 w-10 flex justify-center items-center bg-light-gray-3 rounded-[8px] ">
-        <img src="/icons/Housing.svg" alt="Housing" height={24} width={24} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-light-gray-4 font-inter font-medium text-[14px]">Housing</p>
-        <h3 className="font-inter font-bold text-[16px] text-dark-1">$250.00</h3>
-        <div className="flex gap-1 items-center">
-          <p className="text-light-gray-4 font-inter font-medium text-[14px]">15%*</p>
-          <AiOutlineArrowUp className="text-light-red" />
+     <div className="bg-white grid grid-cols-3 gap-4 rounded-[8px] min-h-[200px] flex-grow py-5 px-6">
+  {Array.from({ length: 5 }).map((_, index) => (
+    <React.Fragment key={index}>
+      {/* Each container */}
+      <div className="flex justify-between flex-grow items-center pr-4 relative">
+        <div className="flex gap-3">
+          <div className="h-20 w-10 flex justify-center items-center bg-light-gray-3 rounded-[8px]">
+            <img src="/icons/Housing.svg" alt="Housing" height={24} width={24} />
+          </div>
+          <div className="flex flex-col gap-1">
+            <p className="text-light-gray-4 font-inter font-medium text-[14px]">Housing</p>
+            <h3 className="font-inter font-bold text-[16px] text-dark-1">$250.00</h3>
+            <div className="flex gap-1 items-center">
+              <p className="text-light-gray-4 font-inter font-medium text-[14px]">15%*</p>
+              <AiOutlineArrowUp className="text-light-red" />
+            </div>
+          </div>
         </div>
+        <BsArrowRight className="text-primary-1" />
+        
+        {/* Continuous vertical line */}
+        {(index + 1) % 3 !== 0 && (
+          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gray-300"></div>
+        )}
       </div>
-    </div>
-    <BsArrowRight className="text-primary-1" />
-  </div>
-  
-  <div className="flex justify-between flex-grow items-center pr-4 border-r-[1px] border-r-light-gray-5 p-4">
-    <div className="flex gap-3">
-      <div className="h-20 w-10 flex justify-center items-center bg-light-gray-3 rounded-[8px] ">
-        <img src="/icons/Housing.svg" alt="Housing" height={24} width={24} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-light-gray-4 font-inter font-medium text-[14px]">Housing</p>
-        <h3 className="font-inter font-bold text-[16px] text-dark-1">$250.00</h3>
-        <div className="flex gap-1 items-center">
-          <p className="text-light-gray-4 font-inter font-medium text-[14px]">15%*</p>
-          <AiOutlineArrowUp className="text-light-red" />
-        </div>
-      </div>
-    </div>
-    <BsArrowRight className="text-primary-1" />
-  </div>
-  
-  <div className="flex justify-between flex-grow items-center pr-4 p-4 border-b-[1px] border-b-light-gray-5">
-    <div className="flex gap-3">
-      <div className="h-20 w-10 flex justify-center items-center bg-light-gray-3 rounded-[8px] ">
-        <img src="/icons/Housing.svg" alt="Housing" height={24} width={24} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-light-gray-4 font-inter font-medium text-[14px]">Housing</p>
-        <h3 className="font-inter font-bold text-[16px] text-dark-1">$250.00</h3>
-        <div className="flex gap-1 items-center">
-          <p className="text-light-gray-4 font-inter font-medium text-[14px]">15%*</p>
-          <AiOutlineArrowUp className="text-light-red" />
-        </div>
-      </div>
-    </div>
-    <BsArrowRight className="text-primary-1" />
-  </div>
-
-  <div className="flex justify-between flex-grow items-center pr-4 p-4">
-    <div className="flex gap-3">
-      <div className="h-20 w-10 flex justify-center items-center bg-light-gray-3 rounded-[8px] ">
-        <img src="/icons/Housing.svg" alt="Housing" height={24} width={24} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-light-gray-4 font-inter font-medium text-[14px]">Housing</p>
-        <h3 className="font-inter font-bold text-[16px] text-dark-1">$250.00</h3>
-        <div className="flex gap-1 items-center">
-          <p className="text-light-gray-4 font-inter font-medium text-[14px]">15%*</p>
-          <AiOutlineArrowUp className="text-light-red" />
-        </div>
-      </div>
-    </div>
-    <BsArrowRight className="text-primary-1" />
-  </div>
-
-  <div className="flex justify-between flex-grow items-center pr-4 p-4">
-    <div className="flex gap-3">
-      <div className="h-20 w-10 flex justify-center items-center bg-light-gray-3 rounded-[8px] ">
-        <img src="/icons/Housing.svg" alt="Housing" height={24} width={24} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-light-gray-4 font-inter font-medium text-[14px]">Housing</p>
-        <h3 className="font-inter font-bold text-[16px] text-dark-1">$250.00</h3>
-        <div className="flex gap-1 items-center">
-          <p className="text-light-gray-4 font-inter font-medium text-[14px]">15%*</p>
-          <AiOutlineArrowUp className="text-light-red" />
-        </div>
-      </div>
-    </div>
-    <BsArrowRight className="text-primary-1" />
-  </div>
-
-  <div className="flex justify-between flex-grow items-center pr-4 p-4">
-    <div className="flex gap-3">
-      <div className="h-20 w-10 flex justify-center items-center bg-light-gray-3 rounded-[8px] ">
-        <img src="/icons/Housing.svg" alt="Housing" height={24} width={24} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-light-gray-4 font-inter font-medium text-[14px]">Housing</p>
-        <h3 className="font-inter font-bold text-[16px] text-dark-1">$250.00</h3>
-        <div className="flex gap-1 items-center">
-          <p className="text-light-gray-4 font-inter font-medium text-[14px]">15%*</p>
-          <AiOutlineArrowUp className="text-light-red" />
-        </div>
-      </div>
-    </div>
-    <BsArrowRight className="text-primary-1" />
-  </div>
+      
+      {/* Conditional horizontal line after each row */}
+      {(index + 1) % 3 === 0 && (
+        <div className="col-span-3 h-[1px] bg-gray-300"></div>
+      )}
+    </React.Fragment>
+  ))}
 </div>
+
+
 
         </div>
       </div>
