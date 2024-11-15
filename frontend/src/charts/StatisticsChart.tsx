@@ -54,7 +54,7 @@ const chartConfig = {
 export function StatisticsChart() {
   const { pathname } = useLocation();
   return (
-    <div className="flex-grow h-full">
+    <div className="flex-grow h-full max-w-full">
       <Card className="border-none h-full"> 
         <CardHeader>
           <div className="flex justify-between w-full items-center">
@@ -78,7 +78,7 @@ export function StatisticsChart() {
         </CardHeader>
 
         <CardContent className="h-full"> 
-          <ChartContainer config={chartConfig} className="h-full"> 
+          <ChartContainer config={chartConfig} className="h-full max-w-full"> 
             <ResponsiveContainer width="100%" height="100%" aspect={2}> 
               <BarChart data={pathname === "/expenses" ? chartDataExpenses : chartData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />

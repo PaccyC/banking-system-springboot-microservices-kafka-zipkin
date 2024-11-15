@@ -216,7 +216,7 @@ function Dashboard() {
 
 
      {/* Transactions,Statistics and expenses breakdown */}
-     <div className=" grid sm:grid-cols-1 lg:grid-cols-3 gap-4 w-full">
+     <div className=" grid sm:grid-cols-1  lg:grid-cols-3 gap-4 w-full">
       <div className=" flex flex-col gap-2 sm:col-span-3 lg:col-span-1">
         <div className=" flex justify-between w-full">
           <h3 className="font-inter font-normal text-[22px] text-gray-1">Recent Transaction</h3>
@@ -224,7 +224,7 @@ function Dashboard() {
               className="cursor-pointer text-gray-1 font-medium text-[16px]  flex gap-1 items-center">
                 View All <IoIosArrowForward size={16}/></p>
         </div>
-        <div className="bg-white  flex flex-col gap-8 rounded-[8px] min-h-[200px] flex-grow py-5 px-6">
+        <div className="bg-white w-full sm:col-span-3  flex flex-col gap-8 rounded-[8px] min-h-[200px] flex-grow py-5 px-6">
          <TransactionFilter/>
          <div className=" flex flex-col gap-4">
           <TransactionDetail

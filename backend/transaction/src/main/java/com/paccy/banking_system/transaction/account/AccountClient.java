@@ -4,7 +4,7 @@ import com.paccy.banking_system.transaction.utils.AccountResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(value = "customer-account", url = "http://localhost:8060/api/v1/account")
+@FeignClient(value = "customer-account", url = "customer-account")
 public interface AccountClient {
 
     @GetMapping("/{id}")
