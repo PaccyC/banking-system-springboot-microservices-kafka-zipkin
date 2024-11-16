@@ -39,6 +39,27 @@ services:
       context: ./customer-account
     networks:
       - banking-net
+  config-server:
+    image: config-server:latest
+    build:
+      context: ./configuration-server
+    networks:
+      - banking-net
+
+  discovery-server:
+    image: discovery-server:latest
+    build:
+      context: ./discovery-server
+    networks:
+      - banking-net
+
+  notification-service:
+    image: notification-service:latest
+    build:
+      context: ./notification-service
+    networks:
+      - banking-net
+
 
   transaction-service:
     image: transaction-service:latest
