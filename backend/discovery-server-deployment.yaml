@@ -21,6 +21,8 @@ spec:
         io.kompose.service: discovery-server
     spec:
       containers:
-        - image: registry.digitalocean.com/banking-system-registry/discovery-server
+        - image: registry.digitalocean.com/banking-system-registry/discovery-server:latest
           name: discovery-server
+      imagePullSecrets:
+        - name: registry-banking-system-registry
       restartPolicy: Always

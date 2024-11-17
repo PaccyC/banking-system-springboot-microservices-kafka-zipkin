@@ -1,10 +1,12 @@
 package com.paccy.banking_system.account.controllers;
 
 import com.paccy.banking_system.account.entities.Account;
+import com.paccy.banking_system.account.entities.domains.ApiResponse;
 import com.paccy.banking_system.account.utils.CreateAccountRequest;
 import com.paccy.banking_system.account.utils.UpdateAccountRequest;
 import com.paccy.banking_system.account.services.AccountService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +20,11 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("/create")
-    public ResponseEntity<Account> createAccount(
+    public ResponseEntity<ApiResponse<Account>> createAccount(
             @RequestBody CreateAccountRequest createAccountRequest,
             @RequestHeader("Authorization") String token){
-        return  ResponseEntity.ok(accountService.createAccountForCurrentCustomer(createAccountRequest,token));
+        Account response= accountService.createAccountForCurrentCustomer(createAccountRequest,token);
+        return  new  ApiResponse<>(response,"Account Created successfully", HttpStatus.CREATED).toResponseEntity();
     }
 
     @GetMapping("/{id}")

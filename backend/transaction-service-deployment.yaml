@@ -21,6 +21,8 @@ spec:
         io.kompose.service: transaction-service
     spec:
       containers:
-        - image: registry.digitalocean.com/banking-system-registry/transaction-service
+        - image: registry.digitalocean.com/banking-system-registry/transaction-service:latest
           name: transaction-service
+      imagePullSecrets:
+        - name: registry-banking-system-registry
       restartPolicy: Always

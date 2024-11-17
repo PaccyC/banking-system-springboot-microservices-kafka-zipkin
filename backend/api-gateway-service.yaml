@@ -12,5 +12,6 @@ spec:
     - name: "8866"
       port: 8866
       targetPort: 8866
+  type: LoadBalancer
   selector:
     io.kompose.service: api-gateway

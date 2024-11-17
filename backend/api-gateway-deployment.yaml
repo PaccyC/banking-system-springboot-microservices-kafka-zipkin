@@ -21,9 +21,11 @@ spec:
         io.kompose.service: api-gateway
     spec:
       containers:
-        - image: api-gateway:latest
+        - image: registry.digitalocean.com/banking-system-registry/api-gateway:latest
           name: api-gateway
           ports:
             - containerPort: 8866
               protocol: TCP
+      imagePullSecrets:
+        - name: registry-banking-system-registry
       restartPolicy: Always

@@ -21,6 +21,8 @@ spec:
         io.kompose.service: customer-service
     spec:
       containers:
-        - image: registry.digitalocean.com/banking-system-registry/customer-service
+        - image: registry.digitalocean.com/banking-system-registry/customer-service:latest
           name: customer-service
+      imagePullSecrets:
+        - name: registry-banking-system-registry
       restartPolicy: Always

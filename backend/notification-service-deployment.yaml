@@ -21,6 +21,10 @@ spec:
         io.kompose.service: notification-service
     spec:
       containers:
-        - image: registry.digitalocean.com/banking-system-registry/notification-service
+        - image: registry.digitalocean.com/banking-system-registry/notification-service:latest
           name: notification-service
+
+
+      imagePullSecrets:
+        - name: registry-banking-system-registry
       restartPolicy: Always

@@ -21,6 +21,9 @@ spec:
         io.kompose.service: customer-account
     spec:
       containers:
-        - image: registry.digitalocean.com/banking-system-registry/customer-account
+        - image: registry.digitalocean.com/banking-system-registry/customer-account:latest
           name: customer-account
+      imagePullSecrets:
+        - name: registry-banking-system-registry
+
       restartPolicy: Always

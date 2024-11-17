@@ -2,6 +2,7 @@ package com.paccy.banking_system.customer.controllers;
 
 import com.paccy.banking_system.customer.auth.services.JwtService;
 import com.paccy.banking_system.customer.entities.Customer;
+import com.paccy.banking_system.customer.entities.domain.ApiResponse;
 import com.paccy.banking_system.customer.services.CustomerService;
 import com.paccy.banking_system.customer.utils.EditCustomerRequest;
 import lombok.RequiredArgsConstructor;
@@ -29,17 +30,17 @@ public class CustomerController {
 
 
  @GetMapping("/current")
-    public ResponseEntity<Optional<Customer>> getCurrentCustomer() {
+    public ResponseEntity<ApiResponse<Optional<Customer>>> getCurrentCustomer() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        Checking if we get principal and current authentication status
-//    System.out.println("Principal: "+ authentication.getPrincipal());
     System.out.println("IsAuthenticated:" +authentication.isAuthenticated());
     System.out.println(authentication);
         if (authentication != null && authentication.isAuthenticated()
                 && !(authentication.getPrincipal() instanceof String)) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-            return ResponseEntity.ok(customerService.getCustomerByEmail(userDetails.getUsername()));
+            Optional<Customer> customer= customerService.getCustomerByEmail(userDetails.getUsername());
+
+            return new ApiResponse<>(customer,"Current customer retrieved successfully",HttpStatus.OK).toResponseEntity();
         } else {
             log.warn("No authenticated user found");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -47,27 +48,29 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(
+    public ResponseEntity<ApiResponse<Customer>> getCustomerById(
             @PathVariable Integer id
     ){
-        return ResponseEntity.ok(customerService.getCustomerById(id));
+     Customer response= customerService.getCustomerById(id);
+        return new ApiResponse<>(response,"Customer Profile retrieved Successfully",HttpStatus.OK).toResponseEntity();
     }
 
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> editCustomer(
+    public ResponseEntity<ApiResponse<Customer>> editCustomer(
             @RequestBody @Validated EditCustomerRequest editCustomerRequest,
             @PathVariable Integer id
     ){
-        return ResponseEntity.ok(customerService.editCustomer(editCustomerRequest,id));
+     Customer  response= customerService.editCustomer(editCustomerRequest,id);
+        return new ApiResponse<>(response,"Customer Profile updated successfully",HttpStatus.OK).toResponseEntity();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(
+    public ResponseEntity<ApiResponse<String>> deleteCustomer(
             @PathVariable Integer id
     ){
-        return ResponseEntity.ok(customerService.deleteCustomer(id));
+        return new ApiResponse<>("Successfully deleted","Customer Profile deleted successfully",HttpStatus.OK).toResponseEntity();
     }
 
 }
