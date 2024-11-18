@@ -57,7 +57,7 @@ public class AccountServiceImpl implements AccountService {
 
     public Account getCustomerAccountById(Integer accountId) {
         return accountRepository.findById(accountId).orElseThrow(
-                ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
+                ()-> new AccountNotFoundException("Sorry, the account",accountId)
         );
     }
 
@@ -65,7 +65,6 @@ public class AccountServiceImpl implements AccountService {
      * It retrieves all accounts that authenticated customer is associated with
      */
     public List<Account> getAllAccountOfCustomer(String token) {
-
         try {
             ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
             return accountRepository.findAllByCustomerId(customer.getData().getId());
@@ -87,7 +86,7 @@ public class AccountServiceImpl implements AccountService {
 
 
         var account= accountRepository.findById(accountId).orElseThrow(
-                ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
+                ()-> new AccountNotFoundException("Sorry, the account",accountId)
         );
         if (!Objects.equals(customer.getData().getId(), account.getCustomerId())){
             throw  new NotAuthorizedException("Not allowed to edit this account!");
@@ -107,7 +106,7 @@ public class AccountServiceImpl implements AccountService {
         ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
 //Check if the current user, is the owner of the account
         var account= accountRepository.findById(accountId).orElseThrow(
-                ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
+                ()-> new AccountNotFoundException("Sorry, the account",accountId)
         );
         if (!Objects.equals(customer.getData().getId(), account.getCustomerId())){
             throw  new NotAuthorizedException("Not allowed to edit this account!");
@@ -125,10 +124,10 @@ public class AccountServiceImpl implements AccountService {
     public void updateBalance(Integer accountId, Double newBalance,String token) {
         ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
         var account= accountRepository.findById(accountId).orElseThrow(
-                ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
+                ()-> new AccountNotFoundException("Sorry, the account",accountId)
         );
         if (!Objects.equals(customer.getData().getId(), account.getCustomerId())){
-            throw  new NotAuthorizedException("Sorry! It seems like the account you are trying to edit is not yours");
+            throw  new NotAuthorizedException("Sorry! It seems like the account you don't have edit permission on the account with id ",accountId);
         }
         account.setBalance(newBalance);
         accountRepository.save(account);

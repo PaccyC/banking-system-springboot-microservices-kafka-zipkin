@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 public class NotAuthorizedException  extends RuntimeException{
-    private String message;
+    private String message = "exceptions.notAuthorized";
     private final Date timestamp;
     private Object[] args;
 

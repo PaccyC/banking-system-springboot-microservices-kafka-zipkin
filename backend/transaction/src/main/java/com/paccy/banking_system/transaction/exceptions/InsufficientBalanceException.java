@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class InsufficientBalanceException extends RuntimeException{
-    private String message;
+    private String message = "exceptions.insufficientFunds";
     private final Date timestamp;
     private Object[] args;
     public InsufficientBalanceException(Object... args) {

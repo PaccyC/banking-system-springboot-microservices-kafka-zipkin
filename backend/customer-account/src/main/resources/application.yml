@@ -6,3 +6,7 @@ spring:
     name: customer-account
 
 
+  messages:
+    basename: i18n/messages
+
+

@@ -4,6 +4,9 @@ spring:
   application:
     name: transaction-service
 
+  messages:
+    basename: i18n/messages
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

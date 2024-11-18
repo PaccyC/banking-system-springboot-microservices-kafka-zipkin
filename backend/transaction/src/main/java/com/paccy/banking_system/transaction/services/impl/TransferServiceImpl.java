@@ -33,7 +33,7 @@ public class TransferServiceImpl implements TransferService {
         ApiResponse<AccountResponse> toAccount = accountClient.getAccountById(toAccountId);
 
         if (fromAccount.getData().balance().compareTo(amount) < 0) {
-            throw new InsufficientBalanceException("Insufficient balance, please try again");
+            throw new InsufficientBalanceException("Insufficient balance on the account with id",fromAccount);
         }
         Double newFromAccountBalance = fromAccount.getData().balance() - amount;
         Double newToAccountBalance = toAccount.getData().balance() + amount;

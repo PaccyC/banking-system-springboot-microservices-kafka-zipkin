@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class AccountNotFoundException extends RuntimeException{
 
-    private String message;
+    private String message = "exceptions.accountNotFound";
     private final Date timestamp;
     private Object[] args;
     public AccountNotFoundException(Object... args) {
