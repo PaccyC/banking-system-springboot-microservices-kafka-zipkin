@@ -35,3 +35,8 @@ springdoc:
 
 server:
   port: 8070
+
+
+application:
+  config:
+    customer-account-url: http://localhost:8866/api/v1/account

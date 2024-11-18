@@ -1,4 +1,4 @@
-package com.paccy.banking_system.customer.exceptions.handles;
+package com.paccy.banking_system.customer.exceptions.handlers;
 
 
 import com.paccy.banking_system.customer.entities.domain.ApiResponse;

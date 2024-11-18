@@ -2,6 +2,7 @@ package com.paccy.banking_system.transaction.services;
 
 import com.paccy.banking_system.transaction.account.AccountClient;
 import com.paccy.banking_system.transaction.entities.Transaction;
+import com.paccy.banking_system.transaction.entities.domain.ApiResponse;
 import com.paccy.banking_system.transaction.enums.Status;
 import com.paccy.banking_system.transaction.exceptions.InsufficientBalanceException;
 import com.paccy.banking_system.transaction.kafka.TransactionProducer;
@@ -23,14 +24,14 @@ public class TransferService {
 
     @Transactional
     public Transaction  transfer(Integer fromAccountId, Integer toAccountId, Double amount,String token) {
-        AccountResponse fromAccount= accountClient.getAccountById(fromAccountId);
-        AccountResponse toAccount= accountClient.getAccountById(toAccountId);
+        ApiResponse<AccountResponse> fromAccount= accountClient.getAccountById(fromAccountId);
+        ApiResponse<AccountResponse> toAccount= accountClient.getAccountById(toAccountId);
 
-        if (fromAccount.balance().compareTo(amount) < 0 ){
+        if (fromAccount.getData().balance().compareTo(amount) < 0 ){
             throw new InsufficientBalanceException("Insufficient balance, please try again");
         }
-        Double newFromAccountBalance=fromAccount.balance() - amount;
-        Double newToAccountBalance=toAccount.balance() + amount;
+        Double newFromAccountBalance=fromAccount.getData().balance() - amount;
+        Double newToAccountBalance=toAccount.getData().balance() + amount;
 
         accountClient.updateBalance(fromAccountId, newFromAccountBalance,token);
         accountClient.updateBalance(toAccountId, newToAccountBalance,token);

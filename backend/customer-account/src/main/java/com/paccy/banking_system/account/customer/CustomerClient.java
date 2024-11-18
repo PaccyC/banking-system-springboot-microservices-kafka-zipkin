@@ -1,5 +1,6 @@
 package com.paccy.banking_system.account.customer;
 
+import com.paccy.banking_system.account.entities.domains.ApiResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -8,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface CustomerClient{
 
     @GetMapping("/current")
-    CustomerResponse getCurrentCustomer(@RequestHeader("Authorization") String token);
+    ApiResponse<CustomerResponse> getCurrentCustomer(@RequestHeader("Authorization") String token);
 
 }

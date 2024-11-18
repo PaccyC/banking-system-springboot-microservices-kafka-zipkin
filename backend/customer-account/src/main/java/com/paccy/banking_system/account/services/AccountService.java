@@ -3,6 +3,7 @@ package com.paccy.banking_system.account.services;
 import com.paccy.banking_system.account.customer.CustomerClient;
 import com.paccy.banking_system.account.customer.CustomerResponse;
 import com.paccy.banking_system.account.entities.Account;
+import com.paccy.banking_system.account.entities.domains.ApiResponse;
 import com.paccy.banking_system.account.exceptions.AccountNotFoundException;
 import com.paccy.banking_system.account.exceptions.NotAuthorizedException;
 import com.paccy.banking_system.account.repository.AccountRepository;
@@ -11,6 +12,7 @@ import com.paccy.banking_system.account.utils.UpdateAccountRequest;
 
 import lombok.RequiredArgsConstructor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AccountService {
 
     private final AccountRepository accountRepository;
@@ -27,7 +30,8 @@ public class AccountService {
 
     public Account createAccountForCurrentCustomer(CreateAccountRequest createAccountRequest, String token) {
 
-                CustomerResponse customer= customerClient.getCurrentCustomer(token);
+                ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
+                log.info("Customer:{}",customer);
         Account account = Account
                 .builder()
                 .accountType(createAccountRequest.accountType())
@@ -35,7 +39,7 @@ public class AccountService {
                 .balance(createAccountRequest.balance())
                 .createDate(LocalDate.now())
                 .updateDate(LocalDate.now())
-                .customerId(customer.getId())
+                .customerId(customer.getData().getId())
                 .build();
 
         return accountRepository.save(account);
@@ -50,8 +54,8 @@ public class AccountService {
     public List<Account> getAllAccountOfCustomer( String token) {
 
         try {
-            CustomerResponse customer= customerClient.getCurrentCustomer(token);
-            var accounts = accountRepository.findAllByCustomerId(customer.getId());
+            ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
+            var accounts = accountRepository.findAllByCustomerId(customer.getData().getId());
             return accounts;
 
         }
@@ -62,13 +66,13 @@ public class AccountService {
     }
 
     public Account updateAccount(Integer accountId, UpdateAccountRequest updateAccountRequest, String token) {
-        CustomerResponse customer= customerClient.getCurrentCustomer(token);
+        ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
 
 
         var account= accountRepository.findById(accountId).orElseThrow(
                 ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
         );
-        if (!Objects.equals(customer.getId(), account.getCustomerId())){
+        if (!Objects.equals(customer.getData().getId(), account.getCustomerId())){
         throw  new NotAuthorizedException("Not allowed to edit this account!");
         }
 
@@ -80,12 +84,12 @@ public class AccountService {
     }
 
     public String deleteAccount(Integer accountId,String token) {
-        CustomerResponse customer= customerClient.getCurrentCustomer(token);
+        ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
 //Check if the current user, is the owner of the account
         var account= accountRepository.findById(accountId).orElseThrow(
                 ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
         );
-        if (!Objects.equals(customer.getId(), account.getCustomerId())){
+        if (!Objects.equals(customer.getData().getId(), account.getCustomerId())){
             throw  new NotAuthorizedException("Not allowed to edit this account!");
         }
 
@@ -95,12 +99,12 @@ public class AccountService {
     }
 
     public void updateBalance(Integer accountId, Double newBalance,String token) {
-        CustomerResponse customer= customerClient.getCurrentCustomer(token);
+        ApiResponse<CustomerResponse> customer= customerClient.getCurrentCustomer(token);
         var account= accountRepository.findById(accountId).orElseThrow(
                 ()-> new AccountNotFoundException("Sorry, the account does not exist. Please create a new account.")
         );
-        if (!Objects.equals(customer.getId(), account.getCustomerId())){
-            throw  new NotAuthorizedException("Not allowed to edit this account!");
+        if (!Objects.equals(customer.getData().getId(), account.getCustomerId())){
+            throw  new NotAuthorizedException("Sorry! It seems like the account you are trying to edit is not yours");
         }
         account.setBalance(newBalance);
         accountRepository.save(account);
