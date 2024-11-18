@@ -6,9 +6,11 @@ import com.paccy.banking_system.customer.repositories.CustomerRepository;
 import com.paccy.banking_system.customer.services.CustomerService;
 import com.paccy.banking_system.customer.utils.EditCustomerRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 public class CustomerServiceImpl  implements CustomerService {
     private final CustomerRepository customerRepository;
@@ -20,7 +22,8 @@ public class CustomerServiceImpl  implements CustomerService {
 
     public Customer getCustomerById(Integer id) {
         return customerRepository.findById(id).orElseThrow(
-                ()-> new CustomerNotFoundException("Customer with id " + id + " not found")
+
+                ()-> new CustomerNotFoundException("Customer",id)
         );
     }
 

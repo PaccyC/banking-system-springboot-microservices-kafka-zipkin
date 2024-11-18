@@ -12,11 +12,13 @@ import com.paccy.banking_system.account.utils.CreateAccountRequest;
 import com.paccy.banking_system.account.utils.UpdateAccountRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+@Service
 @RequiredArgsConstructor
 @Slf4j
 public class AccountServiceImpl implements AccountService {

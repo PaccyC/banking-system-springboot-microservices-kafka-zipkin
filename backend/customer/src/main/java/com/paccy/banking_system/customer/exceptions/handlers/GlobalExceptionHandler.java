@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CustomerNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<?> customerNotFoundException(CustomerNotFoundException e, Locale locale){
-        String errorMessage= messageSource.getMessage(e.getMessage(),null,locale);
+        String errorMessage= messageSource.getMessage(e.getMessage(),e.getArgs(),locale);
         return  new ApiResponse<>(null,errorMessage,HttpStatus.NOT_FOUND).toResponseEntity();
 
     }

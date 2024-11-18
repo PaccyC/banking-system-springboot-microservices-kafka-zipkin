@@ -11,9 +11,11 @@ import com.paccy.banking_system.transaction.services.TransferService;
 import com.paccy.banking_system.transaction.utils.AccountResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 @RequiredArgsConstructor
 public class TransferServiceImpl implements TransferService {
     private final TransactionRepository transactionRepository;
