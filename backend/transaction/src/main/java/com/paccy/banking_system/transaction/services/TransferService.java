@@ -16,43 +16,9 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
-public class TransferService {
-    private final TransactionRepository transactionRepository;
-    private final AccountClient accountClient;
-    private  final TransactionProducer transactionProducer;
+public interface TransferService {
 
     @Transactional
-    public Transaction  transfer(Integer fromAccountId, Integer toAccountId, Double amount,String token) {
-        ApiResponse<AccountResponse> fromAccount= accountClient.getAccountById(fromAccountId);
-        ApiResponse<AccountResponse> toAccount= accountClient.getAccountById(toAccountId);
-
-        if (fromAccount.getData().balance().compareTo(amount) < 0 ){
-            throw new InsufficientBalanceException("Insufficient balance, please try again");
-        }
-        Double newFromAccountBalance=fromAccount.getData().balance() - amount;
-        Double newToAccountBalance=toAccount.getData().balance() + amount;
-
-        accountClient.updateBalance(fromAccountId, newFromAccountBalance,token);
-        accountClient.updateBalance(toAccountId, newToAccountBalance,token);
-
-        Transaction transaction = new Transaction();
-        transaction.setTransactionId(UUID.randomUUID().toString());
-        transaction.setFromAccount(fromAccountId);
-        transaction.setToAccount(toAccountId);
-        transaction.setAmount(amount);
-        transaction.setStatus(Status.SUCCESS);
-
-
-
-        transactionProducer.sendTransactionConfirmation();
-
-        return transactionRepository.save(transaction);
-
-
-
-
-    }
-
+    public Transaction  transfer(Integer fromAccountId, Integer toAccountId, Double amount,String token);
 
 }

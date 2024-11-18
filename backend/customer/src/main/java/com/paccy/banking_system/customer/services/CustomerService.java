@@ -10,37 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
-public class CustomerService {
+public interface CustomerService {
 
-    private final CustomerRepository customerRepository;
+    public Customer getCustomerById(Integer id);
 
+    public Customer editCustomer(EditCustomerRequest editCustomerRequest, Integer id);
 
-    public Customer getCustomerById(Integer id) {
-        return customerRepository.findById(id).orElseThrow(
-                ()-> new CustomerNotFoundException("Customer with id " + id + " not found")
-        );
-    }
-
-    public Customer editCustomer(EditCustomerRequest editCustomerRequest, Integer id) {
-
-        Customer customer = getCustomerById(id);
-        customer.setFirstName(editCustomerRequest.firstName());
-        customer.setLastName(editCustomerRequest.lastName());
-        customer.setEmail(editCustomerRequest.email());
-
-        return  customerRepository.save(customer);
-    }
-
-    public String deleteCustomer(Integer id) {
-        Customer customer = getCustomerById(id);
-        customerRepository.delete(customer);
-        return "Customer with id " + id + " deleted";
-    }
+    public String deleteCustomer(Integer id);
 
 
-    public Optional<Customer> getCustomerByEmail(String email) {
-        return Optional.ofNullable(customerRepository.findByEmail(email)
-                .orElseThrow(() -> new CustomerNotFoundException("Customer with email " + email + " not found")));
-    }
+    public Optional<Customer> getCustomerByEmail(String email);
 }

@@ -37,7 +37,6 @@ public class CustomerController {
         if (authentication != null && authentication.isAuthenticated()
                 && !(authentication.getPrincipal() instanceof String)) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
             Optional<Customer> customer= customerService.getCustomerByEmail(userDetails.getUsername());
 
             return new ApiResponse<>(customer,"Current customer retrieved successfully",HttpStatus.OK).toResponseEntity();
