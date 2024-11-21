@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class CustomerServiceImpl  implements CustomerService {
      *Returns the customer with the provided id
      **/
 
-    public Customer getCustomerById(Integer id) {
+    public Customer getCustomerById(UUID id) {
         return customerRepository.findById(id).orElseThrow(
 
                 ()-> new CustomerNotFoundException("Customer",id)
@@ -31,7 +32,7 @@ public class CustomerServiceImpl  implements CustomerService {
      * Updates the details of the customer if the customer exists
      *
      **/
-    public Customer editCustomer(EditCustomerRequest editCustomerRequest, Integer id) {
+    public Customer editCustomer(EditCustomerRequest editCustomerRequest, UUID id) {
 
         Customer customer = getCustomerById(id);
         customer.setFirstName(editCustomerRequest.firstName());
@@ -44,7 +45,7 @@ public class CustomerServiceImpl  implements CustomerService {
     /**
      * Deletes the customer with the ID in the path
      **/
-    public String deleteCustomer(Integer id) {
+    public String deleteCustomer(UUID id) {
         Customer customer = getCustomerById(id);
         customerRepository.delete(customer);
         return "Customer with id " + id + " deleted";

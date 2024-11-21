@@ -8,15 +8,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public interface CustomerService {
 
-    public Customer getCustomerById(Integer id);
+    public Customer getCustomerById(UUID id);
 
-    public Customer editCustomer(EditCustomerRequest editCustomerRequest, Integer id);
+    public Customer editCustomer(EditCustomerRequest editCustomerRequest, UUID id);
 
-    public String deleteCustomer(Integer id);
+    public String deleteCustomer(UUID id);
 
 
     public Optional<Customer> getCustomerByEmail(String email);

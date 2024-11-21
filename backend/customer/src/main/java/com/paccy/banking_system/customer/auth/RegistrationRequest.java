@@ -2,14 +2,13 @@ package com.paccy.banking_system.customer.auth;
 
 import com.paccy.banking_system.customer.entities.Address;
 import com.paccy.banking_system.customer.entities.Role;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+
+import java.util.UUID;
 
 public record RegistrationRequest(
 
-        Integer id,
+        UUID id,
         @NotNull(message = "firstName is required")
         String firstName,
         @NotNull(message = "lastName is required")
@@ -21,6 +20,10 @@ public record RegistrationRequest(
         String phoneNumber,
         @NotNull(message = "password is required")
         @Size(min = 8,message = "Password must be atleast 8 characters")
+        @Pattern(
+                regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
+                message = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+        )
         String password,
         @NotNull(message = "address is required")
         Address address,
