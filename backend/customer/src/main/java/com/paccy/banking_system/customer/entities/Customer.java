@@ -1,10 +1,9 @@
 package com.paccy.banking_system.customer.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -23,19 +23,26 @@ public class Customer implements UserDetails {
 
     @Id
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE
+            strategy = GenerationType.AUTO
     )
-    private Integer id;
+
+    private UUID id;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
+    @Email
     private String email;
     private String phoneNumber;
+    @NotNull
     private String password;
     @Enumerated(EnumType.STRING)
     private  Role role;
 
 
     @Embedded
+    @NotNull
     private Address address;
 
 

@@ -1,7 +1,9 @@
 package com.paccy.banking_system.customer;
 
+import java.util.UUID;
+
 public record CustomerResponse(
-         Integer id,
+         UUID id,
          String firstName,
          String lastName,
          String email,

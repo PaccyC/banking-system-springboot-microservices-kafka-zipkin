@@ -17,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -48,7 +49,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<Customer>> getCustomerById(
-            @PathVariable Integer id
+            @PathVariable UUID id
     ){
      Customer response= customerService.getCustomerById(id);
         return new ApiResponse<>(response,"Customer Profile retrieved Successfully",HttpStatus.OK).toResponseEntity();
@@ -59,7 +60,7 @@ public class CustomerController {
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<Customer>> editCustomer(
             @RequestBody @Validated EditCustomerRequest editCustomerRequest,
-            @PathVariable Integer id
+            @PathVariable UUID id
     ){
      Customer  response= customerService.editCustomer(editCustomerRequest,id);
         return new ApiResponse<>(response,"Customer Profile updated successfully",HttpStatus.OK).toResponseEntity();
