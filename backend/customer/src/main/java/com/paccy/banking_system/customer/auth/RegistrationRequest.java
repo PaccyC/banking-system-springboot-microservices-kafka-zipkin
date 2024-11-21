@@ -5,6 +5,7 @@ import com.paccy.banking_system.customer.entities.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public record RegistrationRequest(
 
@@ -19,7 +20,7 @@ public record RegistrationRequest(
         @NotNull(message = "phoneNumber is required")
         String phoneNumber,
         @NotNull(message = "password is required")
-        @Min(value = 8,message = "Password must be atleast 8 characters")
+        @Size(min = 8,message = "Password must be atleast 8 characters")
         String password,
         @NotNull(message = "address is required")
         Address address,
